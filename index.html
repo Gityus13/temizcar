@@ -1,0 +1,2720 @@
+<!DOCTYPE html>
+<html lang="az" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="TemizCar — Azərbaycanın №1 özünüz yuma stansiyası. Quba filialı açıqdır. temizcar.az">
+<meta name="keywords" content="avtoyuma, car wash, Quba, Azərbaycan, özünüz yuma, TemizCar, temizcar.az">
+<meta property="og:title" content="TemizCar — Azerbaijan's Best Self-Service Car Wash">
+<meta property="og:description" content="Just 50 Qəpik for a full wash. Professional equipment. Open 7 days.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://temizcar.az">
+<title>TemizCar | Azərbaycan №1 Avtoyuma · temizcar.az</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+<style>
+/* =============================================
+   CSS CUSTOM PROPERTIES
+   ============================================= */
+:root {
+  --blue-900: #050e1a;
+  --blue-800: #0a1f35;
+  --blue-700: #0d2d4f;
+  --blue-600: #0e3d6b;
+  --blue-500: #1565a8;
+  --blue-400: #2d87d4;
+  --blue-300: #5aade8;
+  --blue-200: #93cdf0;
+  --blue-100: #d6edfa;
+  --blue-50:  #eef7fd;
+  --teal-400: #14b8a6;
+  --teal-300: #5eead4;
+  --green-400: #4ade80;
+  --gold:      #f59e0b;
+  --white:     #ffffff;
+  --off-white: #f8fbfe;
+  --text-dark: #090f1a;
+  --text-mid:  #2c3e55;
+  --text-soft: #5a7080;
+  --border:    rgba(93,168,232,0.18);
+  --shadow-sm: 0 2px 12px rgba(10,60,110,0.08);
+  --shadow-md: 0 8px 32px rgba(10,60,110,0.13);
+  --shadow-lg: 0 20px 60px rgba(10,60,110,0.18);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --nav-h:   68px;
+  --section-pad: clamp(5rem, 10vw, 9rem);
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul { list-style: none; }
+
+/* =============================================
+   SCROLL PROGRESS BAR
+   ============================================= */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--blue-300), var(--teal-300), var(--blue-300));
+  z-index: 10000; transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(90,173,232,0.7);
+}
+
+/* =============================================
+   PRELOADER
+   ============================================= */
+#preloader {
+  position: fixed; inset: 0;
+  background: var(--blue-900);
+  z-index: 9999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1.5rem;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+#preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-logo {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 800;
+  color: white; letter-spacing: -0.02em;
+}
+.preloader-logo span { color: var(--blue-300); }
+.preloader-bar {
+  width: 200px; height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px; overflow: hidden;
+}
+.preloader-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--blue-300), var(--teal-300));
+  border-radius: 10px;
+  animation: preload 1.8s ease forwards;
+}
+@keyframes preload { 0%{width:0} 100%{width:100%} }
+.preloader-dot { color: rgba(255,255,255,0.4); font-size: 0.85rem; letter-spacing: 0.15em; animation: dotPulse 1s ease-in-out infinite; }
+@keyframes dotPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* =============================================
+   CUSTOM CURSOR (desktop only)
+   ============================================= */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1.5px solid var(--blue-300);
+    border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    top: -18px; left: -18px;
+    transition: transform 0.05s, width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+    mix-blend-mode: normal;
+  }
+  .cursor-dot {
+    position: fixed; width: 6px; height: 6px;
+    background: var(--blue-300);
+    border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    top: -3px; left: -3px;
+  }
+  .cursor-ring.hover { width: 56px; height: 56px; background: rgba(90,173,232,0.12); border-color: var(--blue-200); }
+}
+
+/* =============================================
+   WHATSAPP FLOAT BUTTON
+   ============================================= */
+.wa-float {
+  position: fixed; bottom: 2rem; right: 2rem;
+  z-index: 500;
+  width: 58px; height: 58px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  animation: waFloat 3s ease-in-out infinite;
+}
+.wa-float:hover { transform: scale(1.12); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
+@keyframes waFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.wa-tooltip {
+  position: absolute; right: 70px; top: 50%;
+  transform: translateY(-50%);
+  background: white; color: var(--text-dark);
+  padding: 0.4rem 0.9rem; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  opacity: 0; transition: opacity 0.2s;
+  pointer-events: none;
+}
+.wa-float:hover .wa-tooltip { opacity: 1; }
+
+/* =============================================
+   COOKIE BANNER
+   ============================================= */
+#cookie-banner {
+  position: fixed; bottom: 1.5rem; left: 1.5rem;
+  max-width: 380px; width: calc(100% - 3rem);
+  background: var(--blue-900);
+  border: 1px solid rgba(90,173,232,0.25);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  z-index: 490;
+  box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; gap: 1rem;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+#cookie-banner.hidden { transform: translateY(20px); opacity: 0; pointer-events: none; }
+.cookie-text { color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.6; }
+.cookie-text a { color: var(--blue-300); text-decoration: underline; }
+.cookie-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn-cookie-accept {
+  background: var(--blue-300); color: var(--blue-900);
+  padding: 0.5rem 1.2rem; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 700;
+  transition: background 0.2s;
+}
+.btn-cookie-accept:hover { background: var(--blue-200); }
+.btn-cookie-decline {
+  color: rgba(255,255,255,0.5); font-size: 0.8rem;
+  padding: 0.5rem; border-radius: 8px;
+  transition: color 0.2s;
+}
+.btn-cookie-decline:hover { color: white; }
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
+}
+#navbar.scrolled {
+  background: rgba(5,14,26,0.95);
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(90,173,232,0.12), 0 4px 20px rgba(0,0,0,0.3);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  height: 100%; padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 800;
+  color: white; letter-spacing: -0.02em;
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.nav-logo .drop { font-size: 1.1rem; }
+.nav-logo span { color: var(--blue-300); }
+.nav-logo small { font-size: 0.6rem; color: rgba(255,255,255,0.35); font-weight: 400; letter-spacing: 0.05em; vertical-align: super; }
+.nav-links {
+  display: flex; align-items: center; gap: 0.25rem;
+  flex: 1; justify-content: center;
+}
+.nav-link {
+  color: rgba(255,255,255,0.65);
+  padding: 0.4rem 0.85rem; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.nav-link:hover { color: white; background: rgba(255,255,255,0.07); }
+.nav-right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.lang-select {
+  appearance: none;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75);
+  padding: 0.35rem 1.8rem 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem; font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M5 6L0 0h10z' fill='rgba(255,255,255,0.4)'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  transition: border-color 0.2s;
+}
+.lang-select:hover { border-color: rgba(90,173,232,0.5); }
+.lang-select option { background: var(--blue-900); color: white; }
+.btn-nav-cta {
+  background: linear-gradient(135deg, var(--blue-400), var(--blue-300));
+  color: white; padding: 0.5rem 1.2rem;
+  border-radius: 9px; font-size: 0.85rem; font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(45,135,212,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: none;
+}
+@media (min-width: 900px) { .btn-nav-cta { display: inline-block; } }
+.btn-nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(45,135,212,0.45); }
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  width: 32px; padding: 4px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block; height: 2px; background: white;
+  border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+#mobile-menu {
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  background: rgba(5,14,26,0.98);
+  backdrop-filter: blur(20px);
+  padding: 1.5rem;
+  z-index: 999;
+  display: none; flex-direction: column; gap: 0.5rem;
+  border-bottom: 1px solid rgba(90,173,232,0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+#mobile-menu.open { display: flex; }
+.mobile-link {
+  color: rgba(255,255,255,0.8);
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 1rem; font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s, background 0.2s;
+}
+.mobile-link:hover { color: white; background: rgba(255,255,255,0.05); }
+.mobile-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.5rem 0; }
+.mobile-cta {
+  background: linear-gradient(135deg, var(--blue-400), var(--blue-300));
+  color: white; padding: 0.9rem;
+  border-radius: 12px; font-size: 0.95rem; font-weight: 600;
+  text-align: center; margin-top: 0.5rem;
+}
+
+@media (max-width: 850px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .btn-nav-cta { display: none !important; }
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+#hero {
+  min-height: 100svh;
+  background: var(--blue-900);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: calc(var(--nav-h) + 3rem) 1.5rem 6rem;
+}
+
+/* Mesh gradient background */
+.hero-mesh {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(13,61,107,0.9) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(21,101,168,0.6) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 50% 10%, rgba(20,184,166,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 80%, rgba(45,135,212,0.2) 0%, transparent 60%),
+    var(--blue-900);
+}
+
+/* Grid overlay */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(90,173,232,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,173,232,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* Floating orbs */
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  animation: orbFloat 12s ease-in-out infinite;
+}
+.orb-1 { width: 600px; height: 600px; background: rgba(13,61,107,0.8); top: -150px; left: -150px; animation-delay: 0s; }
+.orb-2 { width: 400px; height: 400px; background: rgba(45,135,212,0.25); bottom: -100px; right: -100px; animation-delay: 3s; }
+.orb-3 { width: 300px; height: 300px; background: rgba(20,184,166,0.18); top: 30%; left: 55%; animation-delay: 6s; }
+@keyframes orbFloat {
+  0%,100%{ transform: translate(0,0) scale(1); }
+  33%{ transform: translate(30px,-20px) scale(1.05); }
+  66%{ transform: translate(-20px,25px) scale(0.97); }
+}
+
+/* Rain */
+.rain-wrap { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.rd {
+  position: absolute; top: -30px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(147,205,240,0.35));
+  border-radius: 2px;
+  animation: rainFall linear infinite;
+}
+@keyframes rainFall { to { transform: translateY(115vh); } }
+
+/* Bubbles */
+.hero-bubble {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 70%);
+  pointer-events: none;
+  animation: bubbleRise linear infinite;
+}
+@keyframes bubbleRise {
+  0%{ transform: translateY(100vh) scale(0); opacity: 0; }
+  5%{ opacity: 0.6; }
+  95%{ opacity: 0.3; }
+  100%{ transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* Content */
+.hero-inner { position: relative; z-index: 10; max-width: 780px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(90,173,232,0.12);
+  border: 1px solid rgba(90,173,232,0.3);
+  color: var(--blue-200);
+  padding: 0.45rem 1.1rem; border-radius: 30px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 2rem;
+}
+.badge-dot { width: 6px; height: 6px; background: var(--teal-300); border-radius: 50%; animation: badgePulse 2s ease-in-out infinite; }
+@keyframes badgePulse { 0%,100%{opacity:0.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 8vw, 7rem);
+  font-weight: 800;
+  color: white;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .accent { color: var(--blue-300); }
+.hero-title .gradient-text {
+  background: linear-gradient(90deg, var(--blue-200), var(--teal-300), var(--blue-300));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 3rem;
+  font-weight: 400;
+  max-width: 500px; margin-left: auto; margin-right: auto;
+  line-height: 1.7;
+}
+.hero-sub strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, var(--blue-400) 0%, var(--blue-300) 100%);
+  color: white; padding: 0.9rem 2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem; font-weight: 600;
+  box-shadow: 0 4px 20px rgba(45,135,212,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s;
+  white-space: nowrap;
+}
+.btn-primary:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 8px 30px rgba(45,135,212,0.5); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.85); padding: 0.9rem 2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem; font-weight: 500;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  white-space: nowrap;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+
+/* Hero stats strip */
+.hero-stats {
+  position: relative; z-index: 10;
+  margin-top: 4rem;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; flex-wrap: wrap;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 0; overflow: hidden;
+  max-width: 640px; width: 100%;
+  backdrop-filter: blur(10px);
+}
+.hero-stat {
+  flex: 1; min-width: 120px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 800;
+  color: white; line-height: 1; display: block;
+}
+.hero-stat-num .unit { color: var(--blue-300); font-size: 1rem; }
+.hero-stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.2rem; }
+
+/* Scroll indicator */
+.scroll-cue {
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  z-index: 10;
+  animation: cueFade 2s ease-in-out infinite;
+}
+@keyframes cueFade { 0%,100%{opacity:0.3} 50%{opacity:0.8} }
+.scroll-cue-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); }
+
+/* =============================================
+   TRUST BAR
+   ============================================= */
+.trust-bar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 1.2rem 1.5rem;
+  overflow: hidden;
+}
+.trust-track {
+  display: flex; align-items: center; gap: 3rem;
+  animation: trustScroll 20s linear infinite;
+  width: max-content;
+}
+.trust-track:hover { animation-play-state: paused; }
+@keyframes trustScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.trust-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; font-weight: 600; color: var(--text-soft);
+  white-space: nowrap;
+}
+.trust-item span:first-child { font-size: 1.1rem; }
+
+/* =============================================
+   SECTIONS SHARED
+   ============================================= */
+.section { padding: var(--section-pad) 1.5rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--blue-400);
+  margin-bottom: 1rem;
+}
+.section-label::before { content: ''; width: 20px; height: 1.5px; background: var(--blue-400); border-radius: 1px; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800; letter-spacing: -0.03em;
+  line-height: 1.05; color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+.section-title.light { color: white; }
+.section-desc {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: var(--text-soft); line-height: 1.8;
+  max-width: 560px;
+}
+.section-desc.light { color: rgba(255,255,255,0.6); }
+.section-head { margin-bottom: 3.5rem; }
+.section-head.center { text-align: center; }
+.section-head.center .section-desc { margin: 0 auto; }
+
+/* Reveal animations */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.up { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* =============================================
+   HOW IT WORKS
+   ============================================= */
+#how {
+  background: white;
+  position: relative; overflow: hidden;
+}
+.how-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(213,237,250,0.4) 0%, transparent 70%);
+}
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+.step-card {
+  position: relative; overflow: hidden;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem 2rem;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s, border-color 0.3s;
+}
+.step-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(45,135,212,0.4);
+}
+.step-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue-400), var(--teal-400));
+  opacity: 0; transition: opacity 0.3s;
+}
+.step-card:hover::after { opacity: 1; }
+.step-num {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 4.5rem; font-weight: 800;
+  color: rgba(45,135,212,0.07);
+  line-height: 1;
+}
+.step-icon-wrap {
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, rgba(45,135,212,0.12), rgba(20,184,166,0.08));
+  border: 1px solid rgba(45,135,212,0.15);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; margin-bottom: 1.5rem;
+  transition: transform 0.3s;
+}
+.step-card:hover .step-icon-wrap { transform: scale(1.1) rotate(-3deg); }
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 0.6rem;
+}
+.step-desc { font-size: 0.88rem; color: var(--text-soft); line-height: 1.7; }
+
+/* Connector line (desktop) */
+@media (min-width: 900px) {
+  .how-grid { position: relative; }
+  .how-grid::before {
+    content: '';
+    position: absolute;
+    top: 55px; left: calc(25% + 30px); right: calc(25% + 30px);
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue-400), var(--teal-400));
+    opacity: 0.25;
+    z-index: 0;
+  }
+}
+
+/* =============================================
+   CAR WASH ANIMATION SECTION
+   ============================================= */
+#car-section {
+  min-height: 400vh;
+  background: linear-gradient(180deg,
+    var(--blue-900) 0%,
+    var(--blue-800) 15%,
+    #0f3156 30%,
+    #c2d9ea 60%,
+    #dbeefb 80%,
+    var(--off-white) 100%
+  );
+  position: relative;
+}
+.car-sticky {
+  position: sticky; top: var(--nav-h);
+  height: calc(100svh - var(--nav-h));
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden; gap: 1rem;
+  padding: 1rem 1.5rem;
+}
+.car-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  font-weight: 800; text-align: center; color: white;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  z-index: 5; position: relative;
+}
+.progress-wrap {
+  width: min(320px, 90vw); z-index: 5; position: relative;
+}
+.progress-bar {
+  height: 6px; background: rgba(255,255,255,0.12);
+  border-radius: 10px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; width: 0%; border-radius: 10px;
+  background: linear-gradient(90deg, var(--teal-400), var(--blue-300));
+  box-shadow: 0 0 12px rgba(90,173,232,0.6);
+  transition: background 0.3s;
+}
+.progress-labels {
+  display: flex; justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.p-label {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.3s;
+}
+.p-label.active { color: rgba(255,255,255,0.9); }
+.clean-status {
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  z-index: 5; position: relative;
+}
+.car-wrap {
+  position: relative; width: min(700px, 95vw); z-index: 5;
+}
+.watercolor-wash {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(147,205,240,0.5), transparent 70%);
+  mix-blend-mode: overlay; opacity: 0; z-index: 10;
+}
+
+/* =============================================
+   STATS
+   ============================================= */
+#stats {
+  background: var(--blue-900);
+  padding: 5rem 1.5rem;
+  position: relative; overflow: hidden;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2px; max-width: 900px; margin: 0 auto;
+  background: rgba(90,173,232,0.1);
+  border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid rgba(90,173,232,0.15);
+}
+.stat-box {
+  background: rgba(5,14,26,0.8);
+  padding: 2.5rem 1.5rem; text-align: center;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s;
+}
+.stat-box:hover { background: rgba(13,61,107,0.5); }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800; color: white;
+  line-height: 1; display: block; margin-bottom: 0.4rem;
+}
+.stat-number .suffix { color: var(--blue-300); }
+.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* =============================================
+   PRICING
+   ============================================= */
+#pricing {
+  background: var(--off-white);
+  position: relative; overflow: hidden;
+}
+.pricing-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(213,237,250,0.5) 0%, transparent 70%);
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem; max-width: 960px; margin: 0 auto;
+  align-items: start;
+}
+.price-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  position: relative; overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+  box-shadow: var(--shadow-sm);
+}
+.price-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.price-card.featured {
+  background: var(--blue-900);
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 2px var(--blue-400), var(--shadow-lg);
+  transform: translateY(-8px) scale(1.02);
+}
+.price-card.featured:hover { transform: translateY(-14px) scale(1.03); }
+.price-tag {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: linear-gradient(135deg, var(--blue-300), var(--teal-400));
+  color: var(--blue-900); font-size: 0.65rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.3rem 0.9rem; border-radius: 20px;
+}
+.plan-name {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-soft);
+  margin-bottom: 0.75rem;
+}
+.plan-name.light { color: rgba(255,255,255,0.5); }
+.plan-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.plan-price {
+  font-family: var(--font-display);
+  font-size: 3.8rem; font-weight: 800;
+  line-height: 1; color: var(--text-dark); margin-bottom: 0.2rem;
+}
+.plan-price.light { color: white; }
+.plan-price sup { font-size: 1.4rem; vertical-align: super; color: var(--blue-400); font-weight: 700; }
+.plan-price.light sup { color: var(--blue-300); }
+.plan-unit { font-size: 0.85rem; color: var(--text-soft); margin-bottom: 2rem; }
+.plan-unit.light { color: rgba(255,255,255,0.4); }
+.plan-features { margin-bottom: 2rem; }
+.plan-features li {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem; color: var(--text-mid);
+}
+.plan-features li.light { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.08); }
+.plan-features li:last-child { border-bottom: none; }
+.feat-check { color: var(--teal-400); font-size: 0.8rem; margin-top: 2px; flex-shrink: 0; }
+.plan-cta {
+  display: block; width: 100%; text-align: center;
+  padding: 0.85rem; border-radius: var(--radius-sm);
+  font-size: 0.9rem; font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+.plan-cta.dark {
+  background: var(--blue-900); color: white;
+  box-shadow: 0 2px 12px rgba(5,14,26,0.15);
+}
+.plan-cta.dark:hover { transform: translateY(-2px); background: var(--blue-800); }
+.plan-cta.glow {
+  background: linear-gradient(135deg, var(--blue-400), var(--blue-300));
+  color: white;
+  box-shadow: 0 4px 20px rgba(45,135,212,0.45);
+}
+.plan-cta.glow:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(45,135,212,0.6); }
+
+/* =============================================
+   BEFORE / AFTER
+   ============================================= */
+#beforeafter {
+  background: var(--blue-900);
+  padding: var(--section-pad) 1.5rem;
+  position: relative; overflow: hidden;
+}
+.ba-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; max-width: 900px; margin: 0 auto;
+}
+@media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-card {
+  border-radius: var(--radius-lg); overflow: hidden;
+  position: relative; aspect-ratio: 4/3;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.ba-visual {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem;
+}
+.ba-before { background: linear-gradient(135deg, #3d2408, #5a3510, #7a4a1a); }
+.ba-after { background: linear-gradient(135deg, #0a3d6b, #1565a8, #2d87d4); }
+.ba-label {
+  position: absolute; top: 1rem; left: 1rem;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+  color: white; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.4rem 0.9rem; border-radius: 20px;
+}
+.ba-after .ba-label { background: rgba(45,135,212,0.7); }
+.ba-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%);
+}
+.ba-desc {
+  position: absolute; bottom: 1.2rem; left: 1.2rem; right: 1.2rem;
+  color: white; font-size: 0.9rem; font-weight: 500;
+}
+
+/* =============================================
+   LOCATIONS — FIXED
+   ============================================= */
+#locations {
+  background: white;
+  position: relative; overflow: hidden;
+}
+.locations-map-full {
+  width: 100%; height: 380px;
+  border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+.locations-map-full iframe {
+  width: 100%; height: 100%;
+  border: none; display: block;
+}
+.map-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: white; border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem; font-weight: 700; color: var(--text-dark);
+  box-shadow: var(--shadow-md);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.loc-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.loc-card {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.loc-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.loc-header {
+  padding: 2rem 2rem 1.5rem;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+}
+.loc-icon {
+  width: 56px; height: 56px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.loc-icon.open-icon { background: linear-gradient(135deg, rgba(74,222,128,0.15), rgba(20,184,166,0.1)); border: 1px solid rgba(74,222,128,0.2); }
+.loc-icon.soon-icon { background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(245,158,11,0.1)); border: 1px solid rgba(251,191,36,0.2); }
+.loc-status {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.3rem 0.8rem; border-radius: 20px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.status-open { background: rgba(74,222,128,0.12); color: #166534; border: 1px solid rgba(74,222,128,0.2); }
+.status-soon { background: rgba(251,191,36,0.12); color: #92400e; border: 1px solid rgba(251,191,36,0.2); }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; }
+.status-dot.green { background: #4ade80; animation: statusPulse 1.5s ease-in-out infinite; }
+.status-dot.yellow { background: #f59e0b; }
+@keyframes statusPulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+.loc-body { padding: 0 2rem 2rem; }
+.loc-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 800;
+  color: var(--text-dark); letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+.loc-country { font-size: 0.8rem; color: var(--blue-400); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.loc-details { display: flex; flex-direction: column; gap: 0; }
+.loc-detail {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem; color: var(--text-mid);
+}
+.loc-detail:last-child { border-bottom: none; }
+.loc-detail-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.loc-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  display: flex; gap: 0.75rem;
+}
+.loc-btn {
+  flex: 1; text-align: center; padding: 0.7rem;
+  border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 700;
+  transition: all 0.25s;
+}
+.loc-btn.primary {
+  background: var(--blue-900); color: white;
+}
+.loc-btn.primary:hover { background: var(--blue-700); transform: translateY(-1px); }
+.loc-btn.outline {
+  border: 1.5px solid var(--border); color: var(--text-mid);
+}
+.loc-btn.outline:hover { border-color: var(--blue-400); color: var(--blue-500); transform: translateY(-1px); }
+.loc-soon-overlay {
+  position: absolute; inset: 0;
+  background: rgba(248,251,254,0.65);
+  backdrop-filter: blur(1px);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-lg);
+  z-index: 2;
+}
+.soon-badge {
+  background: rgba(245,158,11,0.15);
+  border: 1px solid rgba(245,158,11,0.3);
+  color: #92400e;
+  padding: 0.75rem 1.5rem; border-radius: var(--radius-md);
+  font-size: 0.9rem; font-weight: 700;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+/* =============================================
+   TESTIMONIALS
+   ============================================= */
+#testimonials {
+  background: var(--off-white);
+  overflow: hidden; padding: var(--section-pad) 0;
+}
+#testimonials .container { padding: 0 1.5rem; }
+.marquee-wrap { overflow: hidden; margin-top: 3rem; mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+.marquee-inner {
+  display: flex; gap: 1.25rem; width: max-content;
+  animation: marquee 35s linear infinite;
+}
+.marquee-inner:hover { animation-play-state: paused; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.tcard {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem; width: 300px; flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.tcard-stars { color: var(--gold); margin-bottom: 0.9rem; font-size: 0.95rem; letter-spacing: 0.05em; }
+.tcard-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+.tcard-author { display: flex; align-items: center; gap: 0.75rem; }
+.tcard-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-400), var(--teal-400));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: white; flex-shrink: 0;
+}
+.tcard-name { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
+.tcard-loc { font-size: 0.75rem; color: var(--text-soft); }
+
+/* =============================================
+   FAQ
+   ============================================= */
+#faq { background: white; }
+.faq-wrap { max-width: 720px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%; background: none; border: none;
+  padding: 1.4rem 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text-dark); text-align: left;
+  cursor: pointer; transition: color 0.2s;
+}
+.faq-q:hover { color: var(--blue-500); }
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--off-white); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; color: var(--blue-400); flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s;
+}
+.faq-item.open .faq-icon { transform: rotate(180deg); background: var(--blue-500); color: white; border-color: transparent; }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.faq-a-inner { padding: 0 0 1.4rem; font-size: 0.9rem; color: var(--text-soft); line-height: 1.8; }
+.faq-item.open .faq-a { max-height: 250px; }
+
+/* =============================================
+   CONTACT
+   ============================================= */
+#contact {
+  background: var(--blue-900);
+  position: relative; overflow: hidden;
+}
+.contact-mesh {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(13,61,107,0.9), transparent),
+    radial-gradient(ellipse 50% 60% at 85% 30%, rgba(20,184,166,0.12), transparent);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem; max-width: 900px; margin: 0 auto;
+}
+.contact-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: background 0.3s, transform 0.3s, border-color 0.3s;
+}
+.contact-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-6px); border-color: rgba(90,173,232,0.35); }
+.c-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-400));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 20px rgba(45,135,212,0.35);
+}
+.c-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem; font-weight: 800; color: white; margin-bottom: 0.25rem;
+}
+.c-role { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.c-phone {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(90,173,232,0.12); border: 1px solid rgba(90,173,232,0.25);
+  border-radius: 50px; padding: 0.65rem 1.4rem;
+  color: var(--blue-200); font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; transition: all 0.25s;
+}
+.c-phone:hover { background: rgba(90,173,232,0.22); border-color: rgba(90,173,232,0.5); color: white; transform: translateY(-2px); }
+.social-strip {
+  display: flex; gap: 1rem; justify-content: center;
+  flex-wrap: wrap; margin-top: 3.5rem;
+}
+.social-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75);
+  padding: 0.65rem 1.4rem; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 600;
+  transition: all 0.25s;
+}
+.social-btn:hover { background: rgba(255,255,255,0.1); color: white; transform: translateY(-2px); border-color: rgba(255,255,255,0.25); }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: var(--blue-900);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 4rem 1.5rem 2rem;
+  color: rgba(255,255,255,0.5);
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2rem;
+}
+@media (max-width: 800px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand {}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 800;
+  color: white; letter-spacing: -0.02em; margin-bottom: 0.75rem;
+}
+.footer-logo span { color: var(--blue-300); }
+.footer-tagline { font-size: 0.85rem; line-height: 1.7; max-width: 220px; }
+.footer-domain { font-size: 0.78rem; color: var(--blue-400); font-weight: 600; margin-top: 0.5rem; }
+.footer-col h4 {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  margin-bottom: 1.2rem;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a {
+  font-size: 0.85rem; color: rgba(255,255,255,0.4);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--blue-200); }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  font-size: 0.78rem;
+}
+.footer-drops { display: flex; gap: 0.4rem; align-items: center; }
+.drop-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--blue-300); opacity: 0.3;
+  animation: dropFade 2s ease-in-out infinite;
+}
+.drop-dot:nth-child(2) { animation-delay: 0.3s; }
+.drop-dot:nth-child(3) { animation-delay: 0.6s; }
+@keyframes dropFade { 0%,100%{opacity:0.2;transform:scale(1)} 50%{opacity:0.7;transform:scale(1.3)} }
+
+/* =============================================
+   RESPONSIVE UTILITIES
+   ============================================= */
+@media (max-width: 1024px) {
+  :root { --section-pad: clamp(4rem, 8vw, 7rem); }
+}
+@media (max-width: 640px) {
+  .hero-stats { flex-direction: column; }
+  .hero-stat { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hero-stat:last-child { border-bottom: none; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: none; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 400px) {
+  .hero-title { font-size: 2.8rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn-primary, .hero-actions .btn-ghost { width: 100%; justify-content: center; }
+}
+
+/* Click ripple */
+.ripple-effect {
+  position: fixed; pointer-events: none; z-index: 9990;
+  border-radius: 50%; border: 1.5px solid rgba(90,173,232,0.45);
+  animation: rippleSpread 0.7s ease-out forwards;
+}
+@keyframes rippleSpread {
+  0%{ width:0; height:0; opacity:1; transform:translate(-50%,-50%); }
+  100%{ width:80px; height:80px; opacity:0; transform:translate(-50%,-50%); }
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="preloader-logo">Temiz<span>Car</span></div>
+  <div class="preloader-bar"><div class="preloader-fill"></div></div>
+  <div class="preloader-dot">temizcar.az</div>
+</div>
+
+<!-- Cursor (desktop) -->
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/994507069438?text=Salam%2C%20TemizCar%20haqqında%20məlumat%20almaq%20istəyirəm." 
+   class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  💬
+  <span class="wa-tooltip" data-i18n="wa_tooltip">WhatsApp ilə yazın</span>
+</a>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner">
+  <p class="cookie-text">
+    Bu sayt istifadəçi təcrübəsini yaxşılaşdırmaq üçün cookies istifadə edir. 
+    <a href="#">Ətraflı oxu</a>
+  </p>
+  <div class="cookie-btns">
+    <button class="btn-cookie-accept" onclick="dismissCookie()">Qəbul et</button>
+    <button class="btn-cookie-decline" onclick="dismissCookie()">Bağla</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="drop">💧</span>
+      Temiz<span>Car</span>
+      <small>.az</small>
+    </a>
+    <div class="nav-links">
+      <a href="#how" class="nav-link" data-i18n="nav_how">Necə İşləyir</a>
+      <a href="#pricing" class="nav-link" data-i18n="nav_price">Qiymətlər</a>
+      <a href="#locations" class="nav-link" data-i18n="nav_loc">Filiallar</a>
+      <a href="#testimonials" class="nav-link" data-i18n="nav_reviews">Rəylər</a>
+      <a href="#contact" class="nav-link" data-i18n="nav_contact">Əlaqə</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="langSelect" onchange="setLang(this.value)" aria-label="Language">
+        <option value="az">🇦🇿 AZ</option>
+        <option value="ru">🇷🇺 RU</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="tr">🇹🇷 TR</option>
+        <option value="de">🇩🇪 DE</option>
+        <option value="fr">🇫🇷 FR</option>
+        <option value="ar">🇸🇦 AR</option>
+      </select>
+      <a href="#contact" class="btn-nav-cta" data-i18n="nav_cta">Bizimlə Əlaqə</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="#how" class="mobile-link" data-i18n="nav_how">Necə İşləyir</a>
+  <a href="#pricing" class="mobile-link" data-i18n="nav_price">Qiymətlər</a>
+  <a href="#locations" class="mobile-link" data-i18n="nav_loc">Filiallar</a>
+  <a href="#testimonials" class="mobile-link" data-i18n="nav_reviews">Rəylər</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <div class="mobile-divider"></div>
+  <a href="#contact" class="mobile-cta" data-i18n="nav_cta">Bizimlə Əlaqə →</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+  <div class="hero-orb orb-3"></div>
+  <div class="rain-wrap" id="rainWrap"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      <span data-i18n="hero_badge">🇦🇿 Azərbaycanın №1 Özünüz Yuma Stansiyası</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line">Temiz<span class="accent">Car</span></span>
+      <span class="line"><span class="gradient-text" data-i18n="hero_title2">Parıltılı</span></span>
+      <span class="line" data-i18n="hero_title3" style="font-size:0.55em;font-weight:400;color:rgba(255,255,255,0.4);letter-spacing:0.01em">temizcar.az</span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero_sub">
+      Cəmi <strong>50 qəpik</strong> ilə peşəkar avadanlıqla maşınınızı özünüz yuyun.<br>
+      Keyfiyyətli · Sürətli · Sərfəli
+    </p>
+    <div class="hero-actions">
+      <a href="#locations" class="btn-primary">
+        📍 <span data-i18n="hero_cta1">Filialları Gör</span>
+      </a>
+      <a href="#how" class="btn-ghost">
+        ▶ <span data-i18n="hero_cta2">Necə İşləyir</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num"><span class="count" data-t="2500">0</span><span class="unit">+</span></span>
+      <div class="hero-stat-label" data-i18n="stat_cust">Müştəri</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num"><span class="unit">₼</span>0.50</span>
+      <div class="hero-stat-label" data-i18n="stat_price">Min Qiymət</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">7/7</span>
+      <div class="hero-stat-label" data-i18n="stat_days">Günlük Açıq</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num"><span class="count" data-t="100">0</span><span class="unit">%</span></span>
+      <div class="hero-stat-label" data-i18n="stat_sat">Məmnuniyyət</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span data-i18n="scroll_hint">AŞAĞI</span>
+    <div class="scroll-cue-line"></div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="trust-track" id="trustTrack"></div>
+</div>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section id="how" class="section">
+  <div class="how-bg"></div>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label" data-i18n="how_label">Bizim Yanaşma</div>
+      <h2 class="section-title" data-i18n="how_title">Necə İşləyir?</h2>
+      <p class="section-desc" data-i18n="how_desc">
+        4 sadə addımda maşınınızı parıldadın. Avadanlıq hazırdır, növbə yoxdur.
+      </p>
+    </div>
+    <div class="how-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon-wrap">🚗</div>
+        <h3 class="step-title" data-i18n="step1_t">Filialı Seçin</h3>
+        <p class="step-desc" data-i18n="step1_d">Quba filialımıza gəlin. Geniş sahə, rahat giriş. Sıxışıqlıq yoxdur.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-icon-wrap">💳</div>
+        <h3 class="step-title" data-i18n="step2_t">Ödəyin</h3>
+        <p class="step-desc" data-i18n="step2_d">50 qəpikdən başlayan qiymətlər. Nağd pul və ya kart qəbul edilir.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-icon-wrap">🔧</div>
+        <h3 class="step-title" data-i18n="step3_t">Avadanlığı Götürün</h3>
+        <p class="step-desc" data-i18n="step3_d">Yüksək təzyiqli su püskürtən, şampun, şotka — hamısı hazır.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div class="step-icon-wrap">✨</div>
+        <h3 class="step-title" data-i18n="step4_t">Parıldayın!</h3>
+        <p class="step-desc" data-i18n="step4_d">Maşınınız yeni kimi parıldayır. Hər yuma üçün bonus nöqtəsi qazanırsınız!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CAR WASH ANIMATION
+     ============================================================ -->
+<section id="car-section">
+  <div class="car-sticky">
+    <div class="car-title reveal" data-i18n="car_title">Maşınınızı Yuyun — Cəmi 50 Qəpik</div>
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="pFill"></div>
+      </div>
+      <div class="progress-labels">
+        <span class="p-label active" id="pl1" data-i18n="ph1">Çirkli</span>
+        <span class="p-label" id="pl2" data-i18n="ph2">Yuyulur</span>
+        <span class="p-label" id="pl3" data-i18n="ph3">Parıltılı</span>
+      </div>
+    </div>
+    <div class="clean-status" id="cStatus">🟤 Çirkli</div>
+    <div class="car-wrap" id="carWrap">
+      <div class="watercolor-wash" id="wcWash"></div>
+      <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" id="carSVG" 
+           style="width:100%;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.5))">
+        <!-- Shadow -->
+        <ellipse cx="350" cy="308" rx="275" ry="14" fill="rgba(0,0,0,0.3)"/>
+        <!-- Body Lower -->
+        <rect x="65" y="200" width="570" height="95" rx="14" fill="#c0392b" id="bLow"/>
+        <!-- Body Upper -->
+        <path d="M145 200 L175 118 L245 88 L455 88 L525 118 L555 200 Z" fill="#c0392b" id="bUp"/>
+        <!-- Body sheen -->
+        <path d="M145 200 L175 118 L245 88 L455 88 L525 118 L555 200" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+        <!-- Roof highlight -->
+        <path d="M180 120 Q350 78 520 120" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"/>
+        <!-- Windshield front -->
+        <path d="M185 198 L213 116 L272 93 L272 198 Z" fill="#a8d5f5" opacity="0.9"/>
+        <path d="M198 143 L222 103 L252 95 L250 128 Z" fill="rgba(255,255,255,0.22)"/>
+        <!-- Windshield rear -->
+        <path d="M428 198 L428 93 L487 116 L515 198 Z" fill="#a8d5f5" opacity="0.9"/>
+        <path d="M448 138 L448 103 L478 113 L478 146 Z" fill="rgba(255,255,255,0.18)"/>
+        <!-- Side window -->
+        <rect x="276" y="94" width="148" height="102" rx="5" fill="#a8d5f5" opacity="0.9"/>
+        <rect x="283" y="100" width="58" height="33" rx="3" fill="rgba(255,255,255,0.2)"/>
+        <!-- Door lines -->
+        <line x1="358" y1="198" x2="358" y2="293" stroke="rgba(0,0,0,0.25)" stroke-width="2"/>
+        <line x1="276" y1="198" x2="276" y2="293" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+        <line x1="424" y1="198" x2="424" y2="293" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+        <!-- Handles -->
+        <rect x="305" y="248" width="38" height="8" rx="4" fill="rgba(0,0,0,0.3)"/>
+        <rect x="360" y="248" width="38" height="8" rx="4" fill="rgba(0,0,0,0.3)"/>
+        <!-- Body crease -->
+        <path d="M65 232 Q350 222 635 232" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2.5"/>
+        <!-- Hood -->
+        <path d="M65 200 L65 215 L145 207 L145 198 Z" fill="#b02818"/>
+        <!-- Trunk -->
+        <path d="M555 198 L555 208 L635 216 L635 200 Z" fill="#b02818"/>
+        <!-- Bumpers -->
+        <path d="M67 285 L67 295 L142 295 L147 285" fill="#242424"/>
+        <rect x="70" y="287" width="72" height="6" rx="3" fill="#444"/>
+        <path d="M553 285 L558 295 L633 295 L633 285" fill="#242424"/>
+        <rect x="558" y="287" width="72" height="6" rx="3" fill="#444"/>
+        <!-- Headlight -->
+        <ellipse cx="90" cy="232" rx="20" ry="13" fill="#fffde7"/>
+        <ellipse cx="90" cy="232" rx="14" ry="9" fill="#fff9c4"/>
+        <ellipse cx="88" cy="230" rx="6" ry="5" fill="white"/>
+        <path d="M70 240 L110 240" stroke="#87ceeb" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Taillight -->
+        <ellipse cx="610" cy="232" rx="20" ry="13" fill="#e74c3c"/>
+        <ellipse cx="610" cy="232" rx="13" ry="8" fill="#c0392b"/>
+        <ellipse cx="612" cy="230" rx="5.5" ry="4.5" fill="#ff6b6b"/>
+        <path d="M593 240 L628 240" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Front wheel -->
+        <circle cx="170" cy="295" r="40" fill="#1a1a1a"/>
+        <circle cx="170" cy="295" r="31" fill="#2d2d2d"/>
+        <circle cx="170" cy="295" r="23" fill="#222"/>
+        <g stroke="#aaa" stroke-width="2.5" stroke-linecap="round">
+          <line x1="170" y1="272" x2="170" y2="295"/><line x1="170" y1="318" x2="170" y2="295"/>
+          <line x1="147" y1="295" x2="170" y2="295"/><line x1="193" y1="295" x2="170" y2="295"/>
+          <line x1="153" y1="279" x2="170" y2="295"/><line x1="187" y1="311" x2="170" y2="295"/>
+          <line x1="153" y1="311" x2="170" y2="295"/><line x1="187" y1="279" x2="170" y2="295"/>
+        </g>
+        <circle cx="170" cy="295" r="8" fill="#999"/>
+        <circle cx="170" cy="295" r="4" fill="#ccc"/>
+        <!-- Rear wheel -->
+        <circle cx="530" cy="295" r="40" fill="#1a1a1a"/>
+        <circle cx="530" cy="295" r="31" fill="#2d2d2d"/>
+        <circle cx="530" cy="295" r="23" fill="#222"/>
+        <g stroke="#aaa" stroke-width="2.5" stroke-linecap="round">
+          <line x1="530" y1="272" x2="530" y2="295"/><line x1="530" y1="318" x2="530" y2="295"/>
+          <line x1="507" y1="295" x2="530" y2="295"/><line x1="553" y1="295" x2="530" y2="295"/>
+          <line x1="513" y1="279" x2="530" y2="295"/><line x1="547" y1="311" x2="530" y2="295"/>
+          <line x1="513" y1="311" x2="530" y2="295"/><line x1="547" y1="279" x2="530" y2="295"/>
+        </g>
+        <circle cx="530" cy="295" r="8" fill="#999"/>
+        <circle cx="530" cy="295" r="4" fill="#ccc"/>
+        <!-- Wheel arches -->
+        <path d="M122 295 Q122 255 170 255 Q218 255 218 295" fill="none" stroke="#9a2010" stroke-width="6"/>
+        <path d="M482 295 Q482 255 530 255 Q578 255 578 295" fill="none" stroke="#9a2010" stroke-width="6"/>
+        <!-- Side skirt -->
+        <rect x="222" y="280" width="256" height="13" rx="4" fill="#b02818"/>
+        <!-- Antenna -->
+        <line x1="428" y1="88" x2="445" y2="50" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="445" cy="50" r="2.5" fill="#888"/>
+        <!-- LICENSE PLATE -->
+        <rect x="297" y="290" width="106" height="17" rx="2" fill="#eee"/>
+        <text x="350" y="302" text-anchor="middle" font-size="8.5" font-weight="800" fill="#333" font-family="Syne,sans-serif">TEMIZCAR.AZ</text>
+        <!-- DIRT GROUP -->
+        <g id="dirtG" opacity="1">
+          <ellipse cx="148" cy="274" rx="32" ry="12" fill="rgba(101,67,33,0.55)"/>
+          <ellipse cx="255" cy="286" rx="22" ry="8" fill="rgba(101,67,33,0.5)"/>
+          <ellipse cx="380" cy="282" rx="28" ry="9" fill="rgba(101,67,33,0.48)"/>
+          <ellipse cx="495" cy="274" rx="26" ry="10" fill="rgba(101,67,33,0.52)"/>
+          <ellipse cx="590" cy="278" rx="20" ry="8" fill="rgba(101,67,33,0.45)"/>
+          <ellipse cx="88" cy="210" rx="24" ry="9" fill="rgba(101,67,33,0.38)"/>
+          <ellipse cx="222" cy="155" rx="18" ry="12" fill="rgba(80,50,20,0.28)"/>
+          <ellipse cx="350" cy="105" rx="36" ry="8" fill="rgba(80,50,20,0.22)"/>
+          <ellipse cx="170" cy="262" rx="22" ry="7" fill="rgba(60,30,0,0.38)"/>
+          <ellipse cx="530" cy="262" rx="22" ry="7" fill="rgba(60,30,0,0.38)"/>
+          <rect x="200" y="200" width="300" height="80" rx="4" fill="rgba(80,50,20,0.1)"/>
+          <ellipse cx="318" cy="92" rx="7" ry="4.5" fill="rgba(255,255,255,0.35)" transform="rotate(-15,318,92)"/>
+          <ellipse cx="388" cy="88" rx="6" ry="4" fill="rgba(255,255,255,0.3)" transform="rotate(10,388,88)"/>
+          <path d="M200 200 L182 290" stroke="rgba(60,30,0,0.28)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M322 200 L308 290" stroke="rgba(60,30,0,0.22)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M448 200 L438 290" stroke="rgba(60,30,0,0.22)" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <!-- SOAP GROUP -->
+        <g id="soapG" opacity="0">
+          <ellipse cx="200" cy="258" rx="62" ry="20" fill="rgba(255,255,255,0.6)"/>
+          <ellipse cx="350" cy="248" rx="82" ry="22" fill="rgba(168,223,245,0.5)"/>
+          <ellipse cx="500" cy="258" rx="62" ry="20" fill="rgba(255,255,255,0.5)"/>
+          <ellipse cx="282" cy="152" rx="42" ry="18" fill="rgba(255,255,255,0.4)"/>
+          <ellipse cx="420" cy="138" rx="36" ry="14" fill="rgba(168,223,245,0.38)"/>
+          <ellipse cx="350" cy="98" rx="52" ry="14" fill="rgba(255,255,255,0.32)"/>
+        </g>
+        <!-- DROPLETS GROUP -->
+        <g id="dropsG" opacity="0">
+          <circle cx="202" cy="228" r="3" fill="rgba(90,173,232,0.85)"/>
+          <circle cx="302" cy="218" r="4" fill="rgba(147,205,240,0.9)"/>
+          <circle cx="400" cy="238" r="2.5" fill="rgba(90,173,232,0.8)"/>
+          <circle cx="498" cy="222" r="3.5" fill="rgba(147,205,240,0.85)"/>
+          <circle cx="252" cy="268" r="3" fill="rgba(90,173,232,0.75)"/>
+          <circle cx="448" cy="262" r="4" fill="rgba(147,205,240,0.8)"/>
+          <circle cx="350" cy="128" r="3" fill="rgba(90,173,232,0.78)"/>
+          <circle cx="232" cy="152" r="2.5" fill="rgba(147,205,240,0.72)"/>
+        </g>
+        <!-- SHINE GROUP -->
+        <g id="shineG" opacity="0">
+          <path d="M145 200 L555 200" stroke="rgba(255,255,255,0.38)" stroke-width="2"/>
+          <ellipse cx="252" cy="228" rx="28" ry="7" fill="rgba(255,255,255,0.14)"/>
+          <ellipse cx="448" cy="228" rx="28" ry="7" fill="rgba(255,255,255,0.14)"/>
+          <path d="M180 122 Q250 143 350 146 Q450 143 520 122" fill="rgba(255,255,255,0.08)"/>
+          <text x="85" y="205" font-size="20" id="sp1" opacity="0">✨</text>
+          <text x="296" y="88" font-size="20" id="sp2" opacity="0">✨</text>
+          <text x="586" y="205" font-size="20" id="sp3" opacity="0">✨</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-box reveal">
+        <span class="stat-number"><span class="ctr" data-t="2500">0</span><span class="suffix">+</span></span>
+        <div class="stat-label" data-i18n="s1">Müştəri</div>
+      </div>
+      <div class="stat-box reveal reveal-delay-1">
+        <span class="stat-number"><span class="suffix">₼</span>0.50</span>
+        <div class="stat-label" data-i18n="s2">Minimum Qiymət</div>
+      </div>
+      <div class="stat-box reveal reveal-delay-2">
+        <span class="stat-number"><span class="ctr" data-t="2">0</span></span>
+        <div class="stat-label" data-i18n="s3">Şəhər (Tezliklə)</div>
+      </div>
+      <div class="stat-box reveal reveal-delay-3">
+        <span class="stat-number"><span class="ctr" data-t="100">0</span><span class="suffix">%</span></span>
+        <div class="stat-label" data-i18n="s4">Məmnuniyyət</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section id="pricing" class="section">
+  <div class="pricing-bg"></div>
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-label" data-i18n="price_label">Şəffaf Qiymətlər</div>
+      <h2 class="section-title" data-i18n="price_title">Sadə & Sərfəli</h2>
+      <p class="section-desc" data-i18n="price_desc">Gizli ödənişlər yoxdur. Qiymət elə qiymətdir — nə çox, nə az.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Standard -->
+      <div class="price-card reveal">
+        <span class="plan-icon">💧</span>
+        <p class="plan-name" data-i18n="p1_name">Standart Yuma</p>
+        <div class="plan-price"><sup>₼</sup>0.50</div>
+        <p class="plan-unit" data-i18n="p1_unit">bir sessiya üçün</p>
+        <ul class="plan-features">
+          <li><span class="feat-check">✔</span><span data-i18n="f1">Yüksək təzyiqli su</span></li>
+          <li><span class="feat-check">✔</span><span data-i18n="f2">Şampun təmin edilir</span></li>
+          <li><span class="feat-check">✔</span><span data-i18n="f3">Şotka və əlcəklər</span></li>
+          <li><span class="feat-check">✔</span><span data-i18n="f4">Vaxt məhdudiyyəti yoxdur</span></li>
+        </ul>
+        <a href="#contact" class="plan-cta dark" data-i18n="p_cta">İndi Başla</a>
+      </div>
+      <!-- Premium (featured) -->
+      <div class="price-card featured reveal reveal-delay-1">
+        <span class="price-tag" data-i18n="best">Ən Yaxşı Seçim</span>
+        <span class="plan-icon">🫧</span>
+        <p class="plan-name light" data-i18n="p2_name">Premium Yuma</p>
+        <div class="plan-price light"><sup>₼</sup>1.00</div>
+        <p class="plan-unit light" data-i18n="p2_unit">bir sessiya üçün</p>
+        <ul class="plan-features">
+          <li class="light"><span class="feat-check">✔</span><span data-i18n="f5">Standartdakı hər şey</span></li>
+          <li class="light"><span class="feat-check">✔</span><span data-i18n="f6">Köpük maqtopu</span></li>
+          <li class="light"><span class="feat-check">✔</span><span data-i18n="f7">Havlu ilə qurutma</span></li>
+          <li class="light"><span class="feat-check">✔</span><span data-i18n="f8">Bonus nöqtəsi ×2</span></li>
+        </ul>
+        <a href="#contact" class="plan-cta glow" data-i18n="p_cta">İndi Başla</a>
+      </div>
+      <!-- Monthly -->
+      <div class="price-card reveal reveal-delay-2">
+        <span class="plan-icon">✨</span>
+        <p class="plan-name" data-i18n="p3_name">Aylıq Abunə</p>
+        <div class="plan-price"><sup>₼</sup>8.00</div>
+        <p class="plan-unit" data-i18n="p3_unit">ayda</p>
+        <ul class="plan-features">
+          <li><span class="feat-check">✔</span><span data-i18n="f9">Limitsiz yuma</span></li>
+          <li><span class="feat-check">✔</span><span data-i18n="f10">VIP növbəsizlik</span></li>
+          <li><span class="feat-check">✔</span><span data-i18n="f11">Xüsusi endirim</span></li>
+          <li><span class="feat-check">✔</span><span data-i18n="f12">Ailə paketi (2 maşın)</span></li>
+        </ul>
+        <a href="#contact" class="plan-cta dark" data-i18n="p_cta">İndi Başla</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BEFORE / AFTER
+     ============================================================ -->
+<section id="beforeafter">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-label" style="color:var(--blue-300)">Nəticə</div>
+      <h2 class="section-title light" data-i18n="ba_title">Əvvəl & Sonra</h2>
+      <p class="section-desc light" data-i18n="ba_desc">TemizCar avadanlığı ilə fərqi özünüz görün.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card reveal">
+        <div class="ba-visual ba-before">🚗</div>
+        <div class="ba-overlay"></div>
+        <div class="ba-label" data-i18n="ba_b">Əvvəl</div>
+        <div class="ba-desc" data-i18n="ba_bd">Çirkli, toz və palçıq</div>
+      </div>
+      <div class="ba-card reveal reveal-delay-2">
+        <div class="ba-visual ba-after">🚗</div>
+        <div class="ba-overlay"></div>
+        <div class="ba-label" data-i18n="ba_a">Sonra</div>
+        <div class="ba-desc" data-i18n="ba_ad">Parıltılı, təmiz, yeni kimi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LOCATIONS — FIXED & PROFESSIONAL
+     ============================================================ -->
+<section id="locations" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label" data-i18n="loc_label">Filiallarımız</div>
+      <h2 class="section-title" data-i18n="loc_title">Harada Tapıla Bilərik?</h2>
+      <p class="section-desc" data-i18n="loc_desc">
+        Hazırda Quba filialımız tam fəaliyyət göstərir. Tezliklə Bakıda da olacağıq!
+      </p>
+    </div>
+    <!-- Full-width map -->
+    <div class="locations-map-full reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95824.38151070636!2d48.42710799915738!3d41.3629613113993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403795fdd1d1104f%3A0x4d72ce05a0c9228d!2sQuba!5e0!3m2!1saz!2saz!4v1777289823731!5m2!1saz!2saz"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="TemizCar Quba Xəritə">
+      </iframe>
+      <div class="map-badge">📍 <span data-i18n="map_badge">Quba, Azərbaycan</span></div>
+    </div>
+    <!-- Location Cards -->
+    <div class="loc-cards-grid">
+      <!-- QUBA -->
+      <div class="loc-card reveal">
+        <div class="loc-header">
+          <div class="loc-icon open-icon">🏪</div>
+          <div class="loc-status status-open">
+            <div class="status-dot green"></div>
+            <span data-i18n="s_open">Açıqdır</span>
+          </div>
+        </div>
+        <div class="loc-body">
+          <h3 class="loc-name">Quba</h3>
+          <p class="loc-country" data-i18n="quba_country">Quba şəhəri · Azərbaycan</p>
+          <div class="loc-details">
+            <div class="loc-detail">
+              <span class="loc-detail-icon">📍</span>
+              <span data-i18n="quba_addr">Quba şəhəri, AquaShine Car Wash (keçmiş ərazi), TemizCar</span>
+            </div>
+            <div class="loc-detail">
+              <span class="loc-detail-icon">🕐</span>
+              <span data-i18n="quba_hours">Həftənin 7 günü · 08:00 – 20:00</span>
+            </div>
+            <div class="loc-detail">
+              <span class="loc-detail-icon">💰</span>
+              <span data-i18n="quba_price">50 qəpikdən başlayan qiymətlər</span>
+            </div>
+            <div class="loc-detail">
+              <span class="loc-detail-icon">📞</span>
+              <span>+994 50 706 9438 · +994 99 549 9933</span>
+            </div>
+            <div class="loc-detail">
+              <span class="loc-detail-icon">💳</span>
+              <span data-i18n="quba_pay">Nağd & Bank kartı qəbul edilir</span>
+            </div>
+          </div>
+        </div>
+        <div class="loc-footer">
+          <a href="tel:+994507069438" class="loc-btn primary" data-i18n="lf_call">Zəng Et</a>
+          <a href="https://maps.google.com/?q=Quba,Azerbaijan" target="_blank" class="loc-btn outline" data-i18n="lf_dir">Yol Al</a>
+        </div>
+      </div>
+
+      <!-- BAKU (coming soon) -->
+      <div class="loc-card reveal reveal-delay-2" style="position:relative">
+        <div class="loc-header">
+          <div class="loc-icon soon-icon">🏗️</div>
+          <div class="loc-status status-soon">
+            <div class="status-dot yellow"></div>
+            <span data-i18n="s_soon">Tezliklə</span>
+          </div>
+        </div>
+        <div class="loc-body">
+          <h3 class="loc-name">Bakı</h3>
+          <p class="loc-country" data-i18n="baku_country">Bakı şəhəri · Azərbaycan</p>
+          <div class="loc-details">
+            <div class="loc-detail">
+              <span class="loc-detail-icon">📍</span>
+              <span data-i18n="baku_addr">Yer hələ açıqlanmayıb — tezliklə!</span>
+            </div>
+            <div class="loc-detail">
+              <span class="loc-detail-icon">🕐</span>
+              <span data-i18n="baku_hours">2025 — Açılış tezliklə!</span>
+            </div>
+            <div class="loc-detail">
+              <span class="loc-detail-icon">🔔</span>
+              <span data-i18n="baku_notify">Xəbər almaq üçün əlaqə saxlayın</span>
+            </div>
+            <div class="loc-detail">
+              <span class="loc-detail-icon">💰</span>
+              <span data-i18n="baku_price">Eyni sərfəli qiymətlər</span>
+            </div>
+          </div>
+        </div>
+        <div class="loc-footer">
+          <a href="https://wa.me/994507069438?text=Bakı+filialı+açılanda+xəbər+ver" target="_blank" class="loc-btn primary" data-i18n="lf_notify">Xəbər Al</a>
+          <a href="#contact" class="loc-btn outline" data-i18n="lf_info">Ətraflı</a>
+        </div>
+        <div class="loc-soon-overlay">
+          <div class="soon-badge">
+            🚧 <span data-i18n="soon_badge">Yaxında Açılacaq</span><br>
+            <small style="font-weight:400;font-size:0.8em" data-i18n="soon_sub">Bakı 2025</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label" data-i18n="t_label">Müştəri Rəyləri</div>
+      <h2 class="section-title" data-i18n="t_title">İnsanlar Nə Deyir?</h2>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-inner" id="marqueeInner"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title" data-i18n="faq_title">Tez-tez Sorulan Suallar</h2>
+    </div>
+    <div class="faq-wrap" id="faqWrap"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="section">
+  <div class="contact-mesh"></div>
+  <div class="container" style="position:relative;z-index:5">
+    <div class="section-head center">
+      <div class="section-label" style="color:var(--blue-300)" data-i18n="c_label">Bizimlə Əlaqə</div>
+      <h2 class="section-title light" data-i18n="c_title">Sualınız Var?</h2>
+      <p class="section-desc light" data-i18n="c_desc">
+        Komandamız həmişə sizə kömək etməyə hazırdır. İstənilən vaxt zəng edin!
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="c-avatar">👨‍💼</div>
+        <h3 class="c-name">Farid Qurbanov</h3>
+        <p class="c-role" data-i18n="c_role1">Quba Filial Rəhbəri</p>
+        <a href="tel:+994507069438" class="c-phone">📞 +994 50 706 9438</a>
+      </div>
+      <div class="contact-card reveal reveal-delay-2">
+        <div class="c-avatar">👨‍🔧</div>
+        <h3 class="c-name">Nizami Cavadov</h3>
+        <p class="c-role" data-i18n="c_role2">Texniki Direktor</p>
+        <a href="tel:+994995499933" class="c-phone">📞 +994 99 549 9933</a>
+      </div>
+    </div>
+    <div class="social-strip">
+      <a href="#" class="social-btn">📘 Facebook</a>
+      <a href="#" class="social-btn">📸 Instagram</a>
+      <a href="https://wa.me/994507069438" class="social-btn" target="_blank">💬 WhatsApp</a>
+      <a href="#" class="social-btn">✈️ Telegram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Temiz<span>Car</span></div>
+      <p class="footer-tagline" data-i18n="ft_tag">Azərbaycanın ən sərfəli özünüz yuma avtomobil stansiyası.</p>
+      <p class="footer-domain">🌐 temizcar.az</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="ft_nav">Keçidlər</h4>
+      <ul>
+        <li><a href="#how" data-i18n="nav_how">Necə İşləyir</a></li>
+        <li><a href="#pricing" data-i18n="nav_price">Qiymətlər</a></li>
+        <li><a href="#locations" data-i18n="nav_loc">Filiallar</a></li>
+        <li><a href="#testimonials" data-i18n="nav_reviews">Rəylər</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="ft_contact">Əlaqə</h4>
+      <ul>
+        <li><a href="tel:+994507069438">+994 50 706 9438</a></li>
+        <li><a href="tel:+994995499933">+994 99 549 9933</a></li>
+        <li><a href="mailto:info@temizcar.az">info@temizcar.az</a></li>
+        <li><a href="#locations" data-i18n="ft_quba">Quba, Azərbaycan</a></li>
+        <li><a href="#locations" data-i18n="ft_baku">Bakı (Tezliklə)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="ft_social">Sosial</h4>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="https://wa.me/994507069438" target="_blank">WhatsApp</a></li>
+        <li><a href="#">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TemizCar Azerbaijan · <span data-i18n="ft_rights">Bütün hüquqlar qorunur.</span></p>
+    <div class="footer-drops">
+      <div class="drop-dot"></div>
+      <div class="drop-dot"></div>
+      <div class="drop-dot"></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ====================================================
+   TRANSLATIONS
+   ==================================================== */
+const T = {
+  az: {
+    nav_how:"Necə İşləyir", nav_price:"Qiymətlər", nav_loc:"Filiallar",
+    nav_reviews:"Rəylər", nav_contact:"Əlaqə", nav_cta:"Bizimlə Əlaqə",
+    wa_tooltip:"WhatsApp ilə yazın",
+    hero_badge:"🇦🇿 Azərbaycanın №1 Özünüz Yuma Stansiyası",
+    hero_title2:"Parıltılı", hero_title3:"temizcar.az",
+    hero_sub:"Cəmi <strong>50 qəpik</strong> ilə peşəkar avadanlıqla maşınınızı özünüz yuyun.<br>Keyfiyyətli · Sürətli · Sərfəli",
+    hero_cta1:"Filialları Gör", hero_cta2:"Necə İşləyir",
+    stat_cust:"Müştəri", stat_price:"Min Qiymət", stat_days:"Günlük Açıq", stat_sat:"Məmnuniyyət",
+    scroll_hint:"AŞAĞI",
+    how_label:"Bizim Yanaşma", how_title:"Necə İşləyir?",
+    how_desc:"4 sadə addımda maşınınızı parıldadın. Avadanlıq hazırdır, növbə yoxdur.",
+    step1_t:"Filialı Seçin", step1_d:"Quba filialımıza gəlin. Geniş sahə, rahat giriş.",
+    step2_t:"Ödəyin", step2_d:"50 qəpikdən başlayan qiymətlər. Nağd pul və ya kart qəbul edilir.",
+    step3_t:"Avadanlığı Götürün", step3_d:"Yüksək təzyiqli su püskürtən, şampun, şotka — hamısı hazır.",
+    step4_t:"Parıldayın!", step4_d:"Maşınınız yeni kimi parıldayır. Bonus nöqtəsi qazanırsınız!",
+    car_title:"Maşınınızı Yuyun — Cəmi 50 Qəpik",
+    ph1:"Çirkli", ph2:"Yuyulur", ph3:"Parıltılı",
+    s1:"Müştəri", s2:"Minimum Qiymət", s3:"Şəhər (Tezliklə)", s4:"Məmnuniyyət",
+    price_label:"Şəffaf Qiymətlər", price_title:"Sadə & Sərfəli",
+    price_desc:"Gizli ödənişlər yoxdur. Qiymət elə qiymətdir — nə çox, nə az.",
+    p1_name:"Standart Yuma", p1_unit:"bir sessiya üçün",
+    p2_name:"Premium Yuma", p2_unit:"bir sessiya üçün",
+    p3_name:"Aylıq Abunə", p3_unit:"ayda",
+    p_cta:"İndi Başla", best:"Ən Yaxşı Seçim",
+    f1:"Yüksək təzyiqli su", f2:"Şampun təmin edilir", f3:"Şotka və əlcəklər",
+    f4:"Vaxt məhdudiyyəti yoxdur", f5:"Standartdakı hər şey", f6:"Köpük maqtopu",
+    f7:"Havlu ilə qurutma", f8:"Bonus nöqtəsi ×2", f9:"Limitsiz yuma",
+    f10:"VIP növbəsizlik", f11:"Xüsusi endirim", f12:"Ailə paketi (2 maşın)",
+    ba_title:"Əvvəl & Sonra", ba_desc:"TemizCar avadanlığı ilə fərqi özünüz görün.",
+    ba_b:"Əvvəl", ba_bd:"Çirkli, toz və palçıq", ba_a:"Sonra", ba_ad:"Parıltılı, təmiz, yeni kimi",
+    loc_label:"Filiallarımız", loc_title:"Harada Tapıla Bilərik?",
+    loc_desc:"Hazırda Quba filialımız tam fəaliyyət göstərir. Tezliklə Bakıda da olacağıq!",
+    map_badge:"Quba, Azərbaycan",
+    s_open:"Açıqdır", s_soon:"Tezliklə",
+    quba_country:"Quba şəhəri · Azərbaycan",
+    quba_addr:"Quba şəhər mərkəzi, TemizCar Car Wash",
+    quba_hours:"Həftənin 7 günü · 08:00 – 20:00",
+    quba_price:"50 qəpikdən başlayan qiymətlər",
+    quba_pay:"Nağd & Bank kartı qəbul edilir",
+    lf_call:"Zəng Et", lf_dir:"Yol Al", lf_notify:"Xəbər Al", lf_info:"Ətraflı",
+    baku_country:"Bakı şəhəri · Azərbaycan",
+    baku_addr:"Yer hələ açıqlanmayıb — tezliklə!",
+    baku_hours:"2025 — Açılış tezliklə!",
+    baku_notify:"Xəbər almaq üçün əlaqə saxlayın",
+    baku_price:"Eyni sərfəli qiymətlər",
+    soon_badge:"Yaxında Açılacaq", soon_sub:"Bakı 2025",
+    t_label:"Müştəri Rəyləri", t_title:"İnsanlar Nə Deyir?",
+    faq_title:"Tez-tez Sorulan Suallar",
+    c_label:"Bizimlə Əlaqə", c_title:"Sualınız Var?",
+    c_desc:"Komandamız həmişə sizə kömək etməyə hazırdır. İstənilən vaxt zəng edin!",
+    c_role1:"Quba Filial Rəhbəri", c_role2:"Texniki Direktor",
+    ft_tag:"Azərbaycanın ən sərfəli özünüz yuma avtomobil stansiyası.",
+    ft_nav:"Keçidlər", ft_contact:"Əlaqə", ft_social:"Sosial",
+    ft_quba:"Quba, Azərbaycan", ft_baku:"Bakı (Tezliklə)",
+    ft_rights:"Bütün hüquqlar qorunur."
+  },
+  ru: {
+    nav_how:"Как работает", nav_price:"Цены", nav_loc:"Филиалы",
+    nav_reviews:"Отзывы", nav_contact:"Контакты", nav_cta:"Связаться",
+    wa_tooltip:"Написать в WhatsApp",
+    hero_badge:"🇦🇿 Автомойка №1 в Азербайджане",
+    hero_title2:"Сверкающий", hero_title3:"temizcar.az",
+    hero_sub:"Всего <strong>50 гяпиков</strong> для профессиональной мойки самообслуживания.<br>Качественно · Быстро · Доступно",
+    hero_cta1:"Наши филиалы", hero_cta2:"Как работает",
+    stat_cust:"Клиентов", stat_price:"Мин. цена", stat_days:"Открыто 7/7", stat_sat:"Удовлетворённость",
+    scroll_hint:"ВНИЗ",
+    how_label:"Наш подход", how_title:"Как это работает?",
+    how_desc:"4 простых шага к сверкающему автомобилю. Оборудование готово, очередей нет.",
+    step1_t:"Выберите филиал", step1_d:"Приезжайте в Губу. Просторная территория, удобный въезд.",
+    step2_t:"Оплатите", step2_d:"От 50 гяпиков. Принимаются наличные и банковские карты.",
+    step3_t:"Возьмите оборудование", step3_d:"Вода высокого давления, шампунь, щётка — всё готово.",
+    step4_t:"Сияйте!", step4_d:"Ваш автомобиль блестит как новый. Заработайте бонусные очки!",
+    car_title:"Помойте машину — всего 50 гяпиков",
+    ph1:"Грязная", ph2:"Моется", ph3:"Сверкает",
+    s1:"Клиентов", s2:"Минимальная цена", s3:"Города (Скоро)", s4:"Удовлетворённость",
+    price_label:"Прозрачные цены", price_title:"Просто и доступно",
+    price_desc:"Никаких скрытых платежей. Цена — это цена, без сюрпризов.",
+    p1_name:"Стандартная", p1_unit:"за сессию",
+    p2_name:"Премиум", p2_unit:"за сессию",
+    p3_name:"Месячный абонемент", p3_unit:"в месяц",
+    p_cta:"Начать", best:"Лучший выбор",
+    f1:"Вода высокого давления", f2:"Шампунь включён", f3:"Щётка и перчатки",
+    f4:"Без ограничений по времени", f5:"Всё из стандарта", f6:"Пенная пушка",
+    f7:"Сушка полотенцем", f8:"Бонусные очки ×2", f9:"Безлимитная мойка",
+    f10:"VIP без очереди", f11:"Специальная скидка", f12:"Семейный пакет (2 авто)",
+    ba_title:"До и После", ba_desc:"Оцените разницу с оборудованием TemizCar.",
+    ba_b:"До", ba_bd:"Грязный, пыльный, в грязи", ba_a:"После", ba_ad:"Блестящий, чистый, как новый",
+    loc_label:"Наши филиалы", loc_title:"Где нас найти?",
+    loc_desc:"Наш филиал в Губе уже работает. Баку скоро открывается!",
+    map_badge:"Губа, Азербайджан",
+    s_open:"Открыто", s_soon:"Скоро",
+    quba_country:"г. Губа · Азербайджан",
+    quba_addr:"Центр г. Губа, TemizCar Car Wash",
+    quba_hours:"7 дней в неделю · 08:00 – 20:00",
+    quba_price:"От 50 гяпиков",
+    quba_pay:"Наличные и банковская карта",
+    lf_call:"Позвонить", lf_dir:"Маршрут", lf_notify:"Уведомить", lf_info:"Подробнее",
+    baku_country:"г. Баку · Азербайджан",
+    baku_addr:"Место ещё не подтверждено — следите!",
+    baku_hours:"2025 — открытие скоро!",
+    baku_notify:"Свяжитесь, чтобы получить уведомление",
+    baku_price:"Те же доступные цены",
+    soon_badge:"Открывается скоро", soon_sub:"Баку 2025",
+    t_label:"Отзывы клиентов", t_title:"Что говорят люди?",
+    faq_title:"Часто задаваемые вопросы",
+    c_label:"Свяжитесь с нами", c_title:"Есть вопросы?",
+    c_desc:"Наша команда всегда готова помочь. Звоните в любое время!",
+    c_role1:"Руководитель филиала Губа", c_role2:"Технический директор",
+    ft_tag:"Самая доступная мойка самообслуживания в Азербайджане.",
+    ft_nav:"Навигация", ft_contact:"Контакты", ft_social:"Соцсети",
+    ft_quba:"Губа, Азербайджан", ft_baku:"Баку (Скоро)",
+    ft_rights:"Все права защищены."
+  },
+  en: {
+    nav_how:"How It Works", nav_price:"Pricing", nav_loc:"Locations",
+    nav_reviews:"Reviews", nav_contact:"Contact", nav_cta:"Get in Touch",
+    wa_tooltip:"Chat on WhatsApp",
+    hero_badge:"🇦🇿 Azerbaijan's #1 Self-Service Car Wash",
+    hero_title2:"Spotless", hero_title3:"temizcar.az",
+    hero_sub:"Just <strong>50 Qəpik</strong> for a full self-service wash with professional equipment.<br>Quality · Fast · Affordable",
+    hero_cta1:"Find a Location", hero_cta2:"How It Works",
+    stat_cust:"Customers", stat_price:"Min. Price", stat_days:"Open Daily", stat_sat:"Satisfaction",
+    scroll_hint:"SCROLL",
+    how_label:"Our Approach", how_title:"How Does It Work?",
+    how_desc:"4 simple steps to a gleaming car. Equipment ready, no queues.",
+    step1_t:"Choose a Location", step1_d:"Come to our Quba branch. Spacious, easy access.",
+    step2_t:"Pay", step2_d:"From 50 Qəpik. Cash and card accepted.",
+    step3_t:"Grab the Gear", step3_d:"High-pressure washer, shampoo, brush — all ready.",
+    step4_t:"Shine!", step4_d:"Your car gleams like new. Earn bonus points!",
+    car_title:"Wash Your Car — Just 50 Qəpik",
+    ph1:"Dirty", ph2:"Washing", ph3:"Spotless",
+    s1:"Customers", s2:"Min. Price", s3:"Cities (Soon)", s4:"Satisfaction",
+    price_label:"Transparent Pricing", price_title:"Simple & Affordable",
+    price_desc:"No hidden fees. What you see is what you pay.",
+    p1_name:"Standard Wash", p1_unit:"per session",
+    p2_name:"Premium Wash", p2_unit:"per session",
+    p3_name:"Monthly Membership", p3_unit:"per month",
+    p_cta:"Get Started", best:"Best Value",
+    f1:"High-pressure water", f2:"Shampoo provided", f3:"Brush & gloves",
+    f4:"Unlimited time", f5:"Everything in Standard", f6:"Foam cannon",
+    f7:"Towel dry", f8:"Bonus points ×2", f9:"Unlimited washes",
+    f10:"VIP skip queue", f11:"Special discount", f12:"Family pack (2 cars)",
+    ba_title:"Before & After", ba_desc:"See the difference with TemizCar equipment.",
+    ba_b:"Before", ba_bd:"Dirty, dusty, muddy", ba_a:"After", ba_ad:"Gleaming, clean, like new",
+    loc_label:"Our Locations", loc_title:"Where to Find Us?",
+    loc_desc:"Our Quba branch is fully operational. Baku coming soon!",
+    map_badge:"Quba, Azerbaijan",
+    s_open:"Open", s_soon:"Coming Soon",
+    quba_country:"Quba City · Azerbaijan",
+    quba_addr:"Quba City Centre, TemizCar Car Wash",
+    quba_hours:"7 days a week · 08:00 – 20:00",
+    quba_price:"From 50 Qəpik",
+    quba_pay:"Cash & Bank card accepted",
+    lf_call:"Call Now", lf_dir:"Get Directions", lf_notify:"Notify Me", lf_info:"More Info",
+    baku_country:"Baku City · Azerbaijan",
+    baku_addr:"Location not yet confirmed — stay tuned!",
+    baku_hours:"2025 — Opening soon!",
+    baku_notify:"Contact us to be notified",
+    baku_price:"Same affordable prices",
+    soon_badge:"Opening Soon", soon_sub:"Baku 2025",
+    t_label:"Customer Reviews", t_title:"What People Say",
+    faq_title:"Frequently Asked Questions",
+    c_label:"Get in Touch", c_title:"Have Questions?",
+    c_desc:"Our team is always ready to help. Call us any time!",
+    c_role1:"Quba Branch Manager", c_role2:"Technical Director",
+    ft_tag:"Azerbaijan's most affordable self-service car wash.",
+    ft_nav:"Links", ft_contact:"Contact", ft_social:"Social",
+    ft_quba:"Quba, Azerbaijan", ft_baku:"Baku (Coming Soon)",
+    ft_rights:"All rights reserved."
+  },
+  tr: {
+    nav_how:"Nasıl Çalışır", nav_price:"Fiyatlar", nav_loc:"Şubeler",
+    nav_reviews:"Yorumlar", nav_contact:"İletişim", nav_cta:"İletişime Geç",
+    wa_tooltip:"WhatsApp'tan yaz",
+    hero_badge:"🇦🇿 Azerbaycan'ın 1 Numaralı Self-Servis Oto Yıkama",
+    hero_title2:"Pırıl Pırıl", hero_title3:"temizcar.az",
+    hero_sub:"Sadece <strong>50 Qəpik</strong> ile profesyonel ekipmanla arabanızı kendiniz yıkayın.<br>Kaliteli · Hızlı · Uygun",
+    hero_cta1:"Şubeleri Gör", hero_cta2:"Nasıl Çalışır",
+    stat_cust:"Müşteri", stat_price:"Min. Fiyat", stat_days:"Günlük Açık", stat_sat:"Memnuniyet",
+    scroll_hint:"KAYDIRIN",
+    how_label:"Yaklaşımımız", how_title:"Nasıl Çalışır?",
+    how_desc:"4 basit adımda parlayan bir araba. Ekipman hazır, kuyruk yok.",
+    step1_t:"Şube Seçin", step1_d:"Quba şubemize gelin. Geniş alan, kolay erişim.",
+    step2_t:"Ödeyin", step2_d:"50 Qəpik'ten başlayan fiyatlar. Nakit ve kart kabul edilir.",
+    step3_t:"Ekipmanı Alın", step3_d:"Yüksek basınçlı su, şampuan, fırça — hepsi hazır.",
+    step4_t:"Parlayın!", step4_d:"Arabanız yeni gibi parlar. Bonus puan kazanın!",
+    car_title:"Arabanızı Yıkayın — Sadece 50 Qəpik",
+    ph1:"Kirli", ph2:"Yıkanıyor", ph3:"Pırıl Pırıl",
+    s1:"Müşteri", s2:"Min. Fiyat", s3:"Şehir (Yakında)", s4:"Memnuniyet",
+    price_label:"Şeffaf Fiyatlar", price_title:"Basit ve Uygun",
+    price_desc:"Gizli ücret yok. Ne görüyorsanız, o kadar ödüyorsunuz.",
+    p1_name:"Standart Yıkama", p1_unit:"seans başına",
+    p2_name:"Premium Yıkama", p2_unit:"seans başına",
+    p3_name:"Aylık Üyelik", p3_unit:"aylık",
+    p_cta:"Başla", best:"En İyi Seçim",
+    f1:"Yüksek basınçlı su", f2:"Şampuan dahil", f3:"Fırça ve eldiven",
+    f4:"Sınırsız süre", f5:"Standarttaki her şey", f6:"Köpük topu",
+    f7:"Havlu kurutma", f8:"Bonus puan ×2", f9:"Sınırsız yıkama",
+    f10:"VIP önce geçme", f11:"Özel indirim", f12:"Aile paketi (2 araç)",
+    ba_title:"Önce ve Sonra", ba_desc:"TemizCar ekipmanıyla farkı kendiniz görün.",
+    ba_b:"Önce", ba_bd:"Kirli, tozlu, çamurlu", ba_a:"Sonra", ba_ad:"Parlak, temiz, yeni gibi",
+    loc_label:"Şubelerimiz", loc_title:"Bizi Nerede Bulabilirsiniz?",
+    loc_desc:"Quba şubemiz tam faaliyette. Bakü yakında açılıyor!",
+    map_badge:"Quba, Azerbaycan",
+    s_open:"Açık", s_soon:"Yakında",
+    quba_country:"Quba Şehri · Azerbaycan",
+    quba_addr:"Quba Şehir Merkezi, TemizCar Car Wash",
+    quba_hours:"Haftanın 7 günü · 08:00 – 20:00",
+    quba_price:"50 Qəpik'ten itibaren",
+    quba_pay:"Nakit ve banka kartı kabul edilir",
+    lf_call:"Ara", lf_dir:"Yol Tarifi", lf_notify:"Haber Ver", lf_info:"Detaylar",
+    baku_country:"Bakü Şehri · Azerbaycan",
+    baku_addr:"Konum henüz açıklanmadı — takipte kalın!",
+    baku_hours:"2025 — Yakında açılıyor!",
+    baku_notify:"Haberdar olmak için iletişime geçin",
+    baku_price:"Aynı uygun fiyatlar",
+    soon_badge:"Yakında Açılıyor", soon_sub:"Bakü 2025",
+    t_label:"Müşteri Yorumları", t_title:"İnsanlar Ne Diyor?",
+    faq_title:"Sık Sorulan Sorular",
+    c_label:"İletişime Geç", c_title:"Sorularınız mı Var?",
+    c_desc:"Ekibimiz her zaman yardıma hazır. Dilediğiniz zaman arayın!",
+    c_role1:"Quba Şube Müdürü", c_role2:"Teknik Direktör",
+    ft_tag:"Azerbaycan'ın en uygun self-servis oto yıkama istasyonu.",
+    ft_nav:"Bağlantılar", ft_contact:"İletişim", ft_social:"Sosyal Medya",
+    ft_quba:"Quba, Azerbaycan", ft_baku:"Bakü (Yakında)",
+    ft_rights:"Tüm hakları saklıdır."
+  },
+  de: {
+    nav_how:"So funktioniert's", nav_price:"Preise", nav_loc:"Standorte",
+    nav_reviews:"Bewertungen", nav_contact:"Kontakt", nav_cta:"Kontakt aufnehmen",
+    wa_tooltip:"WhatsApp schreiben",
+    hero_badge:"🇦🇿 Aserbaidschans beste Selbstbedienungswaschanlage",
+    hero_title2:"Glänzend", hero_title3:"temizcar.az",
+    hero_sub:"Nur <strong>50 Qəpik</strong> für eine professionelle Selbstbedienungswäsche.<br>Qualität · Schnell · Günstig",
+    hero_cta1:"Standorte", hero_cta2:"So funktioniert's",
+    stat_cust:"Kunden", stat_price:"Min. Preis", stat_days:"Täglich offen", stat_sat:"Zufriedenheit",
+    scroll_hint:"SCROLLEN",
+    how_label:"Unser Ansatz", how_title:"Wie funktioniert es?",
+    how_desc:"4 einfache Schritte zum glänzenden Auto. Ausrüstung bereit, keine Warteschlange.",
+    step1_t:"Standort wählen", step1_d:"Kommen Sie nach Quba. Großes Gelände, einfacher Zugang.",
+    step2_t:"Zahlen", step2_d:"Ab 50 Qəpik. Bar und Karte akzeptiert.",
+    step3_t:"Ausrüstung nehmen", step3_d:"Hochdruckreiniger, Shampoo, Bürste — alles bereit.",
+    step4_t:"Glänzen!", step4_d:"Ihr Auto glänzt wie neu. Sammeln Sie Bonuspunkte!",
+    car_title:"Waschen Sie Ihr Auto — nur 50 Qəpik",
+    ph1:"Schmutzig", ph2:"Wird gewaschen", ph3:"Glänzend",
+    s1:"Kunden", s2:"Mindestpreis", s3:"Städte (Bald)", s4:"Zufriedenheit",
+    price_label:"Transparente Preise", price_title:"Einfach & günstig",
+    price_desc:"Keine versteckten Gebühren. Was Sie sehen, zahlen Sie.",
+    p1_name:"Standard-Wäsche", p1_unit:"pro Sitzung",
+    p2_name:"Premium-Wäsche", p2_unit:"pro Sitzung",
+    p3_name:"Monatsmitgliedschaft", p3_unit:"pro Monat",
+    p_cta:"Loslegen", best:"Bestes Angebot",
+    f1:"Hochdruckwasser", f2:"Shampoo inklusive", f3:"Bürste & Handschuhe",
+    f4:"Unbegrenzte Zeit", f5:"Alles aus Standard", f6:"Schaumkanone",
+    f7:"Handtuchtrocknung", f8:"Bonuspunkte ×2", f9:"Unbegrenzte Wäschen",
+    f10:"VIP ohne Wartezeit", f11:"Sonderrabatt", f12:"Familienpaket (2 Autos)",
+    ba_title:"Vorher & Nachher", ba_desc:"Erleben Sie den Unterschied mit TemizCar-Ausrüstung.",
+    ba_b:"Vorher", ba_bd:"Schmutzig, staubig, matschig", ba_a:"Nachher", ba_ad:"Glänzend, sauber, wie neu",
+    loc_label:"Unsere Standorte", loc_title:"Wo sind wir?",
+    loc_desc:"Unser Quba-Standort ist voll in Betrieb. Baku kommt bald!",
+    map_badge:"Quba, Aserbaidschan",
+    s_open:"Geöffnet", s_soon:"Demnächst",
+    quba_country:"Stadt Quba · Aserbaidschan",
+    quba_addr:"Zentrum Quba, TemizCar Car Wash",
+    quba_hours:"7 Tage die Woche · 08:00 – 20:00",
+    quba_price:"Ab 50 Qəpik",
+    quba_pay:"Bar und EC-Karte akzeptiert",
+    lf_call:"Anrufen", lf_dir:"Route", lf_notify:"Benachrichtigen", lf_info:"Mehr",
+    baku_country:"Stadt Baku · Aserbaidschan",
+    baku_addr:"Standort noch nicht bestätigt — bleiben Sie dran!",
+    baku_hours:"2025 — Eröffnung bald!",
+    baku_notify:"Kontaktieren Sie uns, um benachrichtigt zu werden",
+    baku_price:"Gleiche günstige Preise",
+    soon_badge:"Bald eröffnet", soon_sub:"Baku 2025",
+    t_label:"Kundenbewertungen", t_title:"Was sagen die Leute?",
+    faq_title:"Häufig gestellte Fragen",
+    c_label:"Kontakt", c_title:"Haben Sie Fragen?",
+    c_desc:"Unser Team ist immer bereit zu helfen. Rufen Sie jederzeit an!",
+    c_role1:"Quba Filialleiter", c_role2:"Technischer Direktor",
+    ft_tag:"Aserbaidschans günstigste Selbstbedienungswaschanlage.",
+    ft_nav:"Links", ft_contact:"Kontakt", ft_social:"Social Media",
+    ft_quba:"Quba, Aserbaidschan", ft_baku:"Baku (Bald)",
+    ft_rights:"Alle Rechte vorbehalten."
+  },
+  fr: {
+    nav_how:"Comment ça marche", nav_price:"Tarifs", nav_loc:"Emplacements",
+    nav_reviews:"Avis", nav_contact:"Contact", nav_cta:"Nous contacter",
+    wa_tooltip:"Écrire sur WhatsApp",
+    hero_badge:"🇦🇿 N°1 Lavage Auto Self-Service en Azerbaïdjan",
+    hero_title2:"Étincelant", hero_title3:"temizcar.az",
+    hero_sub:"Seulement <strong>50 Qəpik</strong> pour un lavage complet avec équipement professionnel.<br>Qualité · Rapide · Abordable",
+    hero_cta1:"Voir les emplacements", hero_cta2:"Comment ça marche",
+    stat_cust:"Clients", stat_price:"Prix min.", stat_days:"Ouvert 7/7", stat_sat:"Satisfaction",
+    scroll_hint:"DÉFILER",
+    how_label:"Notre approche", how_title:"Comment ça marche?",
+    how_desc:"4 étapes simples pour une voiture étincelante. Équipement prêt, sans file d'attente.",
+    step1_t:"Choisissez un emplacement", step1_d:"Venez à notre succursale de Quba. Grand espace, accès facile.",
+    step2_t:"Payez", step2_d:"À partir de 50 Qəpik. Espèces et carte acceptées.",
+    step3_t:"Prenez l'équipement", step3_d:"Nettoyeur haute pression, shampoing, brosse — tout est prêt.",
+    step4_t:"Brillez!", step4_d:"Votre voiture brille comme neuve. Gagnez des points bonus!",
+    car_title:"Lavez votre voiture — seulement 50 Qəpik",
+    ph1:"Sale", ph2:"En lavage", ph3:"Étincelante",
+    s1:"Clients", s2:"Prix min.", s3:"Villes (Bientôt)", s4:"Satisfaction",
+    price_label:"Prix transparents", price_title:"Simple & Abordable",
+    price_desc:"Pas de frais cachés. Ce que vous voyez, c'est ce que vous payez.",
+    p1_name:"Lavage standard", p1_unit:"par session",
+    p2_name:"Lavage premium", p2_unit:"par session",
+    p3_name:"Abonnement mensuel", p3_unit:"par mois",
+    p_cta:"Commencer", best:"Meilleur choix",
+    f1:"Eau haute pression", f2:"Shampoing fourni", f3:"Brosse & gants",
+    f4:"Temps illimité", f5:"Tout du standard", f6:"Canon à mousse",
+    f7:"Séchage serviette", f8:"Points bonus ×2", f9:"Lavages illimités",
+    f10:"VIP sans attente", f11:"Remise spéciale", f12:"Forfait famille (2 voitures)",
+    ba_title:"Avant & Après", ba_desc:"Voyez la différence avec l'équipement TemizCar.",
+    ba_b:"Avant", ba_bd:"Sale, poussiéreux, boueux", ba_a:"Après", ba_ad:"Brillant, propre, comme neuf",
+    loc_label:"Nos emplacements", loc_title:"Où nous trouver?",
+    loc_desc:"Notre succursale de Quba est en plein fonctionnement. Bakou bientôt!",
+    map_badge:"Quba, Azerbaïdjan",
+    s_open:"Ouvert", s_soon:"Bientôt",
+    quba_country:"Ville de Quba · Azerbaïdjan",
+    quba_addr:"Centre-ville de Quba, TemizCar Car Wash",
+    quba_hours:"7 jours sur 7 · 08:00 – 20:00",
+    quba_price:"À partir de 50 Qəpik",
+    quba_pay:"Espèces et carte bancaire acceptées",
+    lf_call:"Appeler", lf_dir:"Itinéraire", lf_notify:"M'avertir", lf_info:"Plus d'infos",
+    baku_country:"Ville de Bakou · Azerbaïdjan",
+    baku_addr:"Emplacement non encore confirmé — restez à l'écoute!",
+    baku_hours:"2025 — Ouverture prochaine!",
+    baku_notify:"Contactez-nous pour être informé",
+    baku_price:"Mêmes prix abordables",
+    soon_badge:"Ouverture prochaine", soon_sub:"Bakou 2025",
+    t_label:"Avis clients", t_title:"Ce que disent les gens",
+    faq_title:"Questions fréquemment posées",
+    c_label:"Contactez-nous", c_title:"Des questions?",
+    c_desc:"Notre équipe est toujours prête à vous aider. Appelez quand vous voulez!",
+    c_role1:"Responsable succursale Quba", c_role2:"Directeur technique",
+    ft_tag:"La station de lavage self-service la plus abordable d'Azerbaïdjan.",
+    ft_nav:"Liens", ft_contact:"Contact", ft_social:"Réseaux sociaux",
+    ft_quba:"Quba, Azerbaïdjan", ft_baku:"Bakou (Bientôt)",
+    ft_rights:"Tous droits réservés."
+  },
+  ar: {
+    nav_how:"كيف يعمل", nav_price:"الأسعار", nav_loc:"الفروع",
+    nav_reviews:"الآراء", nav_contact:"اتصل بنا", nav_cta:"تواصل معنا",
+    wa_tooltip:"اكتب عبر واتساب",
+    hero_badge:"🇦🇿 أفضل غسيل سيارات ذاتي في أذربيجان",
+    hero_title2:"لامع", hero_title3:"temizcar.az",
+    hero_sub:"فقط <strong>50 قبيك</strong> لغسيل كامل بمعدات احترافية.<br>جودة · سريع · اقتصادي",
+    hero_cta1:"ابحث عن فرع", hero_cta2:"كيف يعمل",
+    stat_cust:"عميل", stat_price:"أدنى سعر", stat_days:"مفتوح يومياً", stat_sat:"رضا العملاء",
+    scroll_hint:"مرر",
+    how_label:"نهجنا", how_title:"كيف يعمل؟",
+    how_desc:"4 خطوات بسيطة لسيارة لامعة. المعدات جاهزة، لا طوابير.",
+    step1_t:"اختر الفرع", step1_d:"تعال إلى فرع قوبا. مساحة واسعة، وصول سهل.",
+    step2_t:"ادفع", step2_d:"من 50 قبيك. نقداً أو بطاقة.",
+    step3_t:"خذ المعدات", step3_d:"ضغط عالٍ، شامبو، فرشاة — كل شيء جاهز.",
+    step4_t:"استمتع باللمعة!", step4_d:"سيارتك تلمع كالجديدة. اكسب نقاط مكافأة!",
+    car_title:"اغسل سيارتك — فقط 50 قبيك",
+    ph1:"متسخة", ph2:"تُغسل", ph3:"لامعة",
+    s1:"عميل", s2:"أدنى سعر", s3:"مدن (قريباً)", s4:"رضا العملاء",
+    price_label:"أسعار شفافة", price_title:"بسيط واقتصادي",
+    price_desc:"لا رسوم خفية. ما تراه هو ما تدفعه.",
+    p1_name:"الغسيل العادي", p1_unit:"لكل جلسة",
+    p2_name:"الغسيل المميز", p2_unit:"لكل جلسة",
+    p3_name:"اشتراك شهري", p3_unit:"شهرياً",
+    p_cta:"ابدأ الآن", best:"الأفضل",
+    f1:"ماء بضغط عالٍ", f2:"شامبو مُدرج", f3:"فرشاة وقفازات",
+    f4:"وقت غير محدود", f5:"كل شيء في العادي", f6:"مدفع رغوة",
+    f7:"تجفيف بالمنشفة", f8:"نقاط مكافأة ×2", f9:"غسيل غير محدود",
+    f10:"VIP بدون انتظار", f11:"خصم خاص", f12:"باقة عائلية (سيارتان)",
+    ba_title:"قبل وبعد", ba_desc:"شاهد الفرق مع معدات TemizCar.",
+    ba_b:"قبل", ba_bd:"متسخة، مغبرة، موحلة", ba_a:"بعد", ba_ad:"لامعة، نظيفة، كالجديدة",
+    loc_label:"فروعنا", loc_title:"أين تجدنا؟",
+    loc_desc:"فرع قوبا يعمل بكامل طاقته. باكو قادمة قريباً!",
+    map_badge:"قوبا، أذربيجان",
+    s_open:"مفتوح", s_soon:"قريباً",
+    quba_country:"مدينة قوبا · أذربيجان",
+    quba_addr:"وسط مدينة قوبا، TemizCar Car Wash",
+    quba_hours:"7 أيام في الأسبوع · 08:00 – 20:00",
+    quba_price:"من 50 قبيك",
+    quba_pay:"نقداً وبطاقة بنكية",
+    lf_call:"اتصل", lf_dir:"اتجاهات", lf_notify:"أعلمني", lf_info:"تفاصيل",
+    baku_country:"مدينة باكو · أذربيجان",
+    baku_addr:"الموقع لم يتأكد بعد — ترقبوا!",
+    baku_hours:"2025 — الافتتاح قريباً!",
+    baku_notify:"تواصل معنا للحصول على إشعار",
+    baku_price:"نفس الأسعار الاقتصادية",
+    soon_badge:"يفتتح قريباً", soon_sub:"باكو 2025",
+    t_label:"آراء العملاء", t_title:"ماذا يقول الناس؟",
+    faq_title:"الأسئلة الشائعة",
+    c_label:"تواصل معنا", c_title:"هل لديك أسئلة؟",
+    c_desc:"فريقنا دائماً مستعد للمساعدة. اتصل في أي وقت!",
+    c_role1:"مدير فرع قوبا", c_role2:"المدير التقني",
+    ft_tag:"أكثر محطة غسيل سيارات ذاتية اقتصاداً في أذربيجان.",
+    ft_nav:"الروابط", ft_contact:"اتصل", ft_social:"التواصل الاجتماعي",
+    ft_quba:"قوبا، أذربيجان", ft_baku:"باكو (قريباً)",
+    ft_rights:"جميع الحقوق محفوظة."
+  }
+};
+
+/* ====================================================
+   TESTIMONIALS DATA
+   ==================================================== */
+const TESTIMONIALS = {
+  az: [
+    {text:"50 qəpikə bu keyfiyyət?! İnanılmazdır. Hər həftə gəlirəm!", name:"Əli Hüseynov", loc:"Quba", stars:5},
+    {text:"Avadanlıq çox yaxşıdır. Maşınım şüşə kimi parıldayır.", name:"Günel Əliyeva", loc:"Quba", stars:5},
+    {text:"Özüm yumaq burada həmişəkindən əyləncəlidir. Tövsiyə edirəm!", name:"Rauf Məmmədov", loc:"Quba", stars:5},
+    {text:"Qiymət əladır, avadanlıq peşəkardır. TemizCar əladir!", name:"Nərmin Quliyeva", loc:"Quba", stars:5},
+    {text:"Bakıda da açılsa çox gözəl olar. Quba filialı 5 ulduz layiqdir.", name:"Cavid Rəhimov", loc:"Quba", stars:5},
+    {text:"Ailəmlə gəlirəm, hamı razıdır. Sərfəli və keyfiyyətli.", name:"Sevinc Babayeva", loc:"Quba", stars:5},
+  ],
+  ru: [
+    {text:"50 гяпиков за такое качество?! Невероятно. Езжу каждую неделю!", name:"Алишер Мамедов", loc:"Губа", stars:5},
+    {text:"Оборудование отличное. Машина блестит как зеркало.", name:"Наргиз Алиева", loc:"Губа", stars:5},
+    {text:"Мыть самому здесь гораздо интереснее. Очень рекомендую!", name:"Руслан Гусейнов", loc:"Губа", stars:5},
+    {text:"Цена отличная, оборудование профессиональное. TemizCar — супер!", name:"Лейла Кулиева", loc:"Губа", stars:5},
+    {text:"Жаль нет в Баку. Губинский филиал заслуживает 5 звёзд.", name:"Джейхун Рагимов", loc:"Губа", stars:5},
+    {text:"Езжу с семьёй, все довольны. Выгодно и качественно.", name:"Гюнай Хасанова", loc:"Губа", stars:5},
+  ],
+  en: [
+    {text:"50 Qəpik for this quality?! Unbelievable. I come every week!", name:"Ali Huseynov", loc:"Quba", stars:5},
+    {text:"Great equipment. My car shines like a mirror.", name:"Gunel Aliyeva", loc:"Quba", stars:5},
+    {text:"Self-washing is so much more fun here. Highly recommend!", name:"Rauf Mammadov", loc:"Quba", stars:5},
+    {text:"Great price, professional gear. TemizCar is the best!", name:"Narmin Guliyeva", loc:"Quba", stars:5},
+    {text:"Wish there was one in Baku. The Quba branch deserves 5 stars.", name:"Javid Rahimov", loc:"Quba", stars:5},
+    {text:"Bring the family, everyone is happy. Affordable and quality.", name:"Sevinj Babayeva", loc:"Quba", stars:5},
+  ]
+};
+
+/* ====================================================
+   FAQ DATA
+   ==================================================== */
+const FAQ_DATA = {
+  az:[
+    {q:"Ödəniş necə edilir?",a:"Nağd pul və ya bank kartı ilə ödəyə bilərsiniz. Minimum ödəniş 50 qəpikdir."},
+    {q:"Özüm yumağa bilirəm?",a:"Bəli! Bütün avadanlıq — yüksək təzyiqli su, şampun, şotka — sizin ixtiyarınızdadır. Sadəcə gəlin, ödəyin, yuyun."},
+    {q:"Nə qədər vaxt lazımdır?",a:"Orta hesabla 15-25 dəqiqə. Lakin vaxt məhdudiyyəti qoyulmur — öz sürətinizdə işləyin."},
+    {q:"Bakı filialı nə vaxt açılacaq?",a:"Bakı filialımız 2025-ci il üçün planlanır. Dəqiq tarix üçün bizimlə əlaqə saxlayın."},
+    {q:"Böyük avtomobillər üçün qiymət eynidir?",a:"Standart avtomobillər üçün 50 qəpik. SUV və yük maşınları üçün əlaqə saxlayın."},
+    {q:"Bonus nöqtəsi proqramı nədir?",a:"Hər yumanızda bonus nöqtəsi qazanırsınız. Toplanmış nöqtələr ilə pulsuz yuma qazanırsınız!"},
+  ],
+  ru:[
+    {q:"Как оплатить?",a:"Принимается наличные и банковская карта. Минимальная оплата 50 гяпиков."},
+    {q:"Можно ли мыть самому?",a:"Да! Всё оборудование — вода высокого давления, шампунь, щётка — в вашем распоряжении."},
+    {q:"Сколько времени занимает?",a:"В среднем 15-25 минут. Ограничений по времени нет — работайте в своём темпе."},
+    {q:"Когда откроется Баку?",a:"Бакинский филиал запланирован на 2025 год. Свяжитесь с нами для уточнения даты."},
+    {q:"Та же цена для больших авто?",a:"50 гяпиков для стандартных авто. Для SUV и грузовиков — уточняйте у нас."},
+    {q:"Что такое бонусная программа?",a:"При каждой мойке вы зарабатываете бонусные очки. Накопленные очки = бесплатная мойка!"},
+  ],
+  en:[
+    {q:"How do I pay?",a:"Cash or bank card accepted. Minimum payment is 50 Qəpik."},
+    {q:"Can I wash it myself?",a:"Yes! All equipment — high-pressure water, shampoo, brush — is at your disposal."},
+    {q:"How long does it take?",a:"Around 15-25 minutes on average. No time limit — work at your own pace."},
+    {q:"When will Baku open?",a:"Baku is planned for 2025. Contact us for the exact date."},
+    {q:"Same price for large cars?",a:"50 Qəpik for standard cars. For SUVs and trucks, please contact us."},
+    {q:"What is the bonus points program?",a:"Earn points with every wash. Accumulated points = free wash!"},
+  ]
+};
+
+/* ====================================================
+   TRUST BAR
+   ==================================================== */
+const TRUST_ITEMS = [
+  {icon:"🏆", text:"Azərbaycanın №1 Avtoyuma"},
+  {icon:"💧", text:"Yüksək Təzyiqli Su"},
+  {icon:"⚡", text:"Sürətli Servis"},
+  {icon:"💳", text:"Kart & Nağd"},
+  {icon:"🔄", text:"7/7 Açıq"},
+  {icon:"✅", text:"100% Keyfiyyət"},
+  {icon:"🌱", text:"Ekoloji Şampun"},
+  {icon:"⭐", text:"5 Ulduzlu Xidmət"},
+  {icon:"🎯", text:"Növbəsiz Giriş"},
+  {icon:"🎁", text:"Bonus Nöqtəsi"},
+];
+
+function buildTrust() {
+  const track = document.getElementById('trustTrack');
+  const items = [...TRUST_ITEMS, ...TRUST_ITEMS];
+  track.innerHTML = items.map(i => `<div class="trust-item"><span>${i.icon}</span><span>${i.text}</span></div>`).join('');
+}
+
+/* ====================================================
+   STATE & LANG
+   ==================================================== */
+let lang = 'az';
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+  const t = T[l] || T.az;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  buildTestimonials(l);
+  buildFAQ(l);
+}
+
+/* ====================================================
+   TESTIMONIALS
+   ==================================================== */
+function buildTestimonials(l) {
+  const data = TESTIMONIALS[l] || TESTIMONIALS.az;
+  const doubled = [...data, ...data, ...data];
+  const container = document.getElementById('marqueeInner');
+  const colors = ['#eff6ff','#f0fdf4','#fef9c3','#fdf4ff','#fff7ed','#f0fdfa'];
+  container.innerHTML = doubled.map((t,i) => `
+    <div class="tcard" style="background:${colors[i % colors.length]}">
+      <div class="tcard-stars">${'★'.repeat(t.stars)}</div>
+      <p class="tcard-text">"${t.text}"</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar">😊</div>
+        <div>
+          <div class="tcard-name">${t.name}</div>
+          <div class="tcard-loc">📍 ${t.loc}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ====================================================
+   FAQ
+   ==================================================== */
+function buildFAQ(l) {
+  const data = FAQ_DATA[l] || FAQ_DATA.az;
+  const wrap = document.getElementById('faqWrap');
+  wrap.innerHTML = data.map((f,i) => `
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>${f.q}</span>
+        <div class="faq-icon">▼</div>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">${f.a}</div></div>
+    </div>
+  `).join('');
+}
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ====================================================
+   COOKIE BANNER
+   ==================================================== */
+function dismissCookie() {
+  document.getElementById('cookie-banner').classList.add('hidden');
+  localStorage.setItem('tcCookie', '1');
+}
+if (localStorage.getItem('tcCookie')) {
+  document.getElementById('cookie-banner').classList.add('hidden');
+} else {
+  setTimeout(() => {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }, 3000);
+  document.getElementById('cookie-banner').classList.add('hidden');
+  // Show after delay
+  setTimeout(() => {
+    document.getElementById('cookie-banner').classList.remove('hidden');
+  }, 3100);
+}
+
+/* ====================================================
+   PRELOADER
+   ==================================================== */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('hidden');
+  }, 1900);
+});
+
+/* ====================================================
+   SCROLL PROGRESS BAR
+   ==================================================== */
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+}, {passive:true});
+
+/* ====================================================
+   NAVBAR SCROLL
+   ==================================================== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+}, {passive:true});
+
+/* ====================================================
+   HAMBURGER
+   ==================================================== */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  });
+});
+
+/* ====================================================
+   SMOOTH SCROLL
+   ==================================================== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+/* ====================================================
+   CURSOR (desktop)
+   ==================================================== */
+const ring = document.getElementById('cursorRing');
+const dot = document.getElementById('cursorDot');
+if (ring && dot) {
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, {passive:true});
+  function animCursor() {
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.transform = `translate(${rx}px,${ry}px)`;
+    dot.style.transform = `translate(${mx}px,${my}px)`;
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a,button,.step-card,.price-card,.loc-card,.contact-card,.tcard').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+}
+
+/* ====================================================
+   CLICK RIPPLE
+   ==================================================== */
+document.addEventListener('click', e => {
+  const r = document.createElement('div');
+  r.className = 'ripple-effect';
+  r.style.cssText = `left:${e.clientX}px;top:${e.clientY}px`;
+  document.body.appendChild(r);
+  setTimeout(() => r.remove(), 700);
+});
+
+/* ====================================================
+   RAIN EFFECT
+   ==================================================== */
+function buildRain() {
+  const wrap = document.getElementById('rainWrap');
+  for (let i = 0; i < 60; i++) {
+    const d = document.createElement('div');
+    d.className = 'rd';
+    d.style.cssText = `left:${Math.random()*100}%;height:${Math.random()*60+20}px;animation-duration:${Math.random()*0.8+0.4}s;animation-delay:${Math.random()*4}s;opacity:${Math.random()*0.3+0.05}`;
+    wrap.appendChild(d);
+  }
+}
+
+/* ====================================================
+   BUBBLES IN HERO
+   ==================================================== */
+function buildBubbles() {
+  const hero = document.getElementById('hero');
+  setInterval(() => {
+    const b = document.createElement('div');
+    b.className = 'hero-bubble';
+    const sz = Math.random()*30+8;
+    b.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;animation-duration:${Math.random()*10+6}s;animation-delay:${Math.random()*2}s`;
+    hero.appendChild(b);
+    setTimeout(() => b.remove(), 16000);
+  }, 800);
+}
+
+/* ====================================================
+   INTERSECTION OBSERVER — REVEAL
+   ==================================================== */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('up'); revealObs.unobserve(e.target); }
+  });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ====================================================
+   COUNTER ANIMATION
+   ==================================================== */
+function animCount(el) {
+  const target = +el.getAttribute('data-t');
+  let current = 0;
+  const step = target / 55;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = Math.floor(current).toLocaleString();
+  }, 28);
+}
+const ctrObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { animCount(e.target); ctrObs.unobserve(e.target); }
+  });
+}, {threshold: 0.5});
+document.querySelectorAll('.count, .ctr').forEach(el => ctrObs.observe(el));
+
+/* ====================================================
+   GSAP CAR SCROLL ANIMATION
+   ==================================================== */
+window.addEventListener('load', () => {
+  if (typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  const dirtG = document.getElementById('dirtG');
+  const soapG = document.getElementById('soapG');
+  const dropsG = document.getElementById('dropsG');
+  const shineG = document.getElementById('shineG');
+  const pFill = document.getElementById('pFill');
+  const cStatus = document.getElementById('cStatus');
+  const wcWash = document.getElementById('wcWash');
+  const sp1 = document.getElementById('sp1');
+  const sp2 = document.getElementById('sp2');
+  const sp3 = document.getElementById('sp3');
+  const pl1 = document.getElementById('pl1');
+  const pl2 = document.getElementById('pl2');
+  const pl3 = document.getElementById('pl3');
+  const t = T[lang] || T.az;
+
+  ScrollTrigger.create({
+    trigger: '#car-section',
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 1,
+    onUpdate: (self) => {
+      const p = self.progress;
+      pFill.style.width = (p * 100) + '%';
+      if (p < 0.33) {
+        const tt = p / 0.33;
+        dirtG.setAttribute('opacity', 1 - tt * 0.6);
+        soapG.setAttribute('opacity', tt * 0.7);
+        dropsG.setAttribute('opacity', tt * 0.4);
+        wcWash.style.opacity = tt * 0.25;
+        shineG.setAttribute('opacity', 0);
+        pFill.style.background = 'linear-gradient(90deg,#92400e,#d97706)';
+        cStatus.textContent = '🟤 ' + (t.ph1 || 'Çirkli');
+        pl1.classList.add('active'); pl2.classList.remove('active'); pl3.classList.remove('active');
+      } else if (p < 0.7) {
+        const tt = (p - 0.33) / 0.37;
+        dirtG.setAttribute('opacity', 0.4 - tt * 0.4);
+        soapG.setAttribute('opacity', 0.7 + tt * 0.3);
+        dropsG.setAttribute('opacity', 0.4 + tt * 0.5);
+        wcWash.style.opacity = 0.25 + tt * 0.25;
+        shineG.setAttribute('opacity', 0);
+        pFill.style.background = 'linear-gradient(90deg,#14b8a6,#5aade8)';
+        cStatus.textContent = '🫧 ' + (t.ph2 || 'Yuyulur...');
+        pl2.classList.add('active'); pl1.classList.remove('active'); pl3.classList.remove('active');
+      } else {
+        const tt = (p - 0.7) / 0.3;
+        dirtG.setAttribute('opacity', 0);
+        soapG.setAttribute('opacity', Math.max(0, 1 - tt * 1.5));
+        dropsG.setAttribute('opacity', Math.max(0, 0.9 - tt));
+        shineG.setAttribute('opacity', Math.min(1, tt * 1.5));
+        wcWash.style.opacity = Math.max(0, 0.5 - tt * 0.5);
+        if (tt > 0.5) {
+          const s = (tt - 0.5) * 2;
+          sp1?.setAttribute('opacity', s);
+          sp2?.setAttribute('opacity', s);
+          sp3?.setAttribute('opacity', s);
+        }
+        pFill.style.background = 'linear-gradient(90deg,#4ade80,#14b8a6,#5aade8)';
+        cStatus.textContent = tt > 0.6 ? '✨ ' + (t.ph3 || 'Parıltılı!') : '💧 Durulanır...';
+        pl3.classList.add('active'); pl1.classList.remove('active'); pl2.classList.remove('active');
+      }
+    }
+  });
+
+  // Car entrance
+  gsap.fromTo('#carSVG', {scale:0.85, opacity:0, y:60}, {
+    scale:1, opacity:1, y:0, duration:1.3, ease:'back.out(1.5)',
+    scrollTrigger:{trigger:'#car-section', start:'top 90%'}
+  });
+
+  // Hero text
+  gsap.from('.hero-title .line', {y:60, opacity:0, duration:0.9, stagger:0.15, ease:'power3.out', delay:0.5});
+  gsap.from('.hero-badge', {y:-20, opacity:0, duration:0.7, ease:'back.out(2)', delay:0.2});
+  gsap.from('.hero-sub', {y:20, opacity:0, duration:0.7, delay:1.2});
+  gsap.from('.hero-actions', {y:20, opacity:0, duration:0.7, delay:1.5});
+  gsap.from('.hero-stats', {y:30, opacity:0, duration:0.9, delay:1.8});
+});
+
+/* ====================================================
+   LANG SELECT INIT
+   ==================================================== */
+document.getElementById('langSelect').addEventListener('change', e => setLang(e.target.value));
+
+/* ====================================================
+   INIT
+   ==================================================== */
+buildRain();
+buildBubbles();
+buildTrust();
+setLang('az');
+
+console.log('%c💧 TemizCar.az — Professional Car Wash Azerbaijan', 'color:#5aade8;font-size:14px;font-weight:bold');
+</script>
+</body>
+</html>
