@@ -9,6 +9,32 @@
 <meta property="og:description" content="Just 50 Qəpik for a full wash. Professional equipment. Open 7 days.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://temizcar.az">
+<meta property="og:image" content="https://temizcar.az/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://temizcar.az">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "TemizCar",
+  "description": "Azerbaijan's #1 self-service car wash. From 50 Qəpik. Open 7 days.",
+  "url": "https://temizcar.az",
+  "telephone": "+994507069438",
+  "email": "info@temizcar.az",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Quba şəhər mərkəzi, TemizCar Car Wash",
+    "addressLocality": "Quba",
+    "addressCountry": "AZ"
+  },
+  "openingHours": "Mo-Su 08:00-20:00",
+  "priceRange": "₼",
+  "sameAs": [
+    "https://wa.me/994507069438"
+  ]
+}
+</script>
 <title>TemizCar | Azərbaycan №1 Avtoyuma · temizcar.az</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1241,7 +1267,7 @@ body::before {
 <div id="cookie-banner">
   <p class="cookie-text">
     Bu sayt istifadəçi təcrübəsini yaxşılaşdırmaq üçün cookies istifadə edir. 
-    <a href="#">Ətraflı oxu</a>
+    <a href="/privacy.html">Ətraflı oxu</a>
   </p>
   <div class="cookie-btns">
     <button class="btn-cookie-accept" onclick="dismissCookie()">Qəbul et</button>
@@ -1754,7 +1780,7 @@ body::before {
             </div>
             <div class="loc-detail">
               <span class="loc-detail-icon">🕐</span>
-              <span data-i18n="baku_hours">2025 — Açılış tezliklə!</span>
+              <span data-i18n="baku_hours">Tezliklə açılacaq!</span>
             </div>
             <div class="loc-detail">
               <span class="loc-detail-icon">🔔</span>
@@ -1836,11 +1862,48 @@ body::before {
         <a href="tel:+994995499933" class="c-phone">📞 +994 99 549 9933</a>
       </div>
     </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-wrap reveal" style="max-width:620px;margin:3rem auto 0;">
+      <div id="form-success" style="display:none;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.3);border-radius:var(--radius-md);padding:1.5rem;text-align:center;color:#4ade80;font-weight:600;margin-bottom:1.5rem;">
+        ✅ <span data-i18n="form_success">Mesajınız göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.</span>
+      </div>
+      <form id="contactForm" action="https://formsubmit.co/yusif.kurba@gmail.com" method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+        <input type="hidden" name="_subject" value="TemizCar.az — Yeni Mesaj">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://temizcar.az?sent=1">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <input type="text" name="name" required placeholder="Adınız" data-i18n-placeholder="form_name"
+              style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:white;padding:0.85rem 1.1rem;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(90,173,232,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+          </div>
+          <div>
+            <input type="tel" name="phone" placeholder="Telefon" data-i18n-placeholder="form_phone"
+              style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:white;padding:0.85rem 1.1rem;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='rgba(90,173,232,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+          </div>
+        </div>
+        <input type="email" name="email" placeholder="E-poçt (isteğe bağlı)" data-i18n-placeholder="form_email"
+          style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:white;padding:0.85rem 1.1rem;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='rgba(90,173,232,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+        <textarea name="message" required rows="4" placeholder="Mesajınız..." data-i18n-placeholder="form_msg"
+          style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:white;padding:0.85rem 1.1rem;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.9rem;outline:none;resize:vertical;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='rgba(90,173,232,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"></textarea>
+        <button type="submit" id="formSubmitBtn"
+          style="background:linear-gradient(135deg,var(--blue-400),var(--blue-300));color:white;padding:1rem;border-radius:var(--radius-sm);font-size:0.95rem;font-weight:700;letter-spacing:0.03em;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(45,135,212,0.4);"
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 28px rgba(45,135,212,0.55)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(45,135,212,0.4)'">
+          <span data-i18n="form_send">📨 Göndər</span>
+        </button>
+      </form>
+    </div>
     <div class="social-strip">
-      <a href="#" class="social-btn">📘 Facebook</a>
-      <a href="#" class="social-btn">📸 Instagram</a>
-      <a href="https://wa.me/994507069438" class="social-btn" target="_blank">💬 WhatsApp</a>
-      <a href="#" class="social-btn">✈️ Telegram</a>
+      <a href="https://facebook.com/temizcar.az" class="social-btn" target="_blank" rel="noopener">📘 Facebook</a>
+      <a href="https://instagram.com/temizcar.az" class="social-btn" target="_blank" rel="noopener">📸 Instagram</a>
+      <a href="https://wa.me/994507069438" class="social-btn" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="https://t.me/temizcar_az" class="social-btn" target="_blank" rel="noopener">✈️ Telegram</a>
     </div>
   </div>
 </section>
@@ -1878,15 +1941,15 @@ body::before {
     <div class="footer-col">
       <h4 data-i18n="ft_social">Sosial</h4>
       <ul>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="https://wa.me/994507069438" target="_blank">WhatsApp</a></li>
-        <li><a href="#">Telegram</a></li>
+        <li><a href="https://facebook.com/temizcar.az" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://instagram.com/temizcar.az" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://wa.me/994507069438" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://t.me/temizcar_az" target="_blank" rel="noopener">Telegram</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 TemizCar Azerbaijan · <span data-i18n="ft_rights">Bütün hüquqlar qorunur.</span></p>
+    <p>© <span id="footerYear">2025</span> TemizCar Azerbaijan · <span data-i18n="ft_rights">Bütün hüquqlar qorunur.</span> · <a href="/privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:underline;">Məxfilik Siyasəti</a></p>
     <div class="footer-drops">
       <div class="drop-dot"></div>
       <div class="drop-dot"></div>
@@ -1946,10 +2009,10 @@ const T = {
     lf_call:"Zəng Et", lf_dir:"Yol Al", lf_notify:"Xəbər Al", lf_info:"Ətraflı",
     baku_country:"Bakı şəhəri · Azərbaycan",
     baku_addr:"Yer hələ açıqlanmayıb — tezliklə!",
-    baku_hours:"2025 — Açılış tezliklə!",
+    baku_hours:"Tezliklə açılacaq!",
     baku_notify:"Xəbər almaq üçün əlaqə saxlayın",
     baku_price:"Eyni sərfəli qiymətlər",
-    soon_badge:"Yaxında Açılacaq", soon_sub:"Bakı 2025",
+    soon_badge:"Yaxında Açılacaq", soon_sub:"Bakı — Tezliklə",
     t_label:"Müştəri Rəyləri", t_title:"İnsanlar Nə Deyir?",
     faq_title:"Tez-tez Sorulan Suallar",
     c_label:"Bizimlə Əlaqə", c_title:"Sualınız Var?",
@@ -1958,7 +2021,9 @@ const T = {
     ft_tag:"Azərbaycanın ən sərfəli özünüz yuma avtomobil stansiyası.",
     ft_nav:"Keçidlər", ft_contact:"Əlaqə", ft_social:"Sosial",
     ft_quba:"Quba, Azərbaycan", ft_baku:"Bakı (Tezliklə)",
-    ft_rights:"Bütün hüquqlar qorunur."
+    ft_rights:"Bütün hüquqlar qorunur.",
+    form_name:"Adınız", form_phone:"Telefon", form_email:"E-poçt (isteğe bağlı)", form_msg:"Mesajınız...", form_send:"📨 Göndər",
+    form_success:"Mesajınız göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq."
   },
   ru: {
     nav_how:"Как работает", nav_price:"Цены", nav_loc:"Филиалы",
@@ -2003,10 +2068,10 @@ const T = {
     lf_call:"Позвонить", lf_dir:"Маршрут", lf_notify:"Уведомить", lf_info:"Подробнее",
     baku_country:"г. Баку · Азербайджан",
     baku_addr:"Место ещё не подтверждено — следите!",
-    baku_hours:"2025 — открытие скоро!",
+    baku_hours:"Открытие — скоро!",
     baku_notify:"Свяжитесь, чтобы получить уведомление",
     baku_price:"Те же доступные цены",
-    soon_badge:"Открывается скоро", soon_sub:"Баку 2025",
+    soon_badge:"Открывается скоро", soon_sub:"Баку — скоро",
     t_label:"Отзывы клиентов", t_title:"Что говорят люди?",
     faq_title:"Часто задаваемые вопросы",
     c_label:"Свяжитесь с нами", c_title:"Есть вопросы?",
@@ -2015,7 +2080,9 @@ const T = {
     ft_tag:"Самая доступная мойка самообслуживания в Азербайджане.",
     ft_nav:"Навигация", ft_contact:"Контакты", ft_social:"Соцсети",
     ft_quba:"Губа, Азербайджан", ft_baku:"Баку (Скоро)",
-    ft_rights:"Все права защищены."
+    ft_rights:"Все права защищены.",
+    form_name:"Ваше имя", form_phone:"Телефон", form_email:"Email (необязательно)", form_msg:"Ваше сообщение...", form_send:"📨 Отправить",
+    form_success:"Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время."
   },
   en: {
     nav_how:"How It Works", nav_price:"Pricing", nav_loc:"Locations",
@@ -2060,10 +2127,10 @@ const T = {
     lf_call:"Call Now", lf_dir:"Get Directions", lf_notify:"Notify Me", lf_info:"More Info",
     baku_country:"Baku City · Azerbaijan",
     baku_addr:"Location not yet confirmed — stay tuned!",
-    baku_hours:"2025 — Opening soon!",
+    baku_hours:"Opening coming soon!",
     baku_notify:"Contact us to be notified",
     baku_price:"Same affordable prices",
-    soon_badge:"Opening Soon", soon_sub:"Baku 2025",
+    soon_badge:"Opening Soon", soon_sub:"Baku — Coming Soon",
     t_label:"Customer Reviews", t_title:"What People Say",
     faq_title:"Frequently Asked Questions",
     c_label:"Get in Touch", c_title:"Have Questions?",
@@ -2072,7 +2139,9 @@ const T = {
     ft_tag:"Azerbaijan's most affordable self-service car wash.",
     ft_nav:"Links", ft_contact:"Contact", ft_social:"Social",
     ft_quba:"Quba, Azerbaijan", ft_baku:"Baku (Coming Soon)",
-    ft_rights:"All rights reserved."
+    ft_rights:"All rights reserved.",
+    form_name:"Your Name", form_phone:"Phone", form_email:"Email (optional)", form_msg:"Your message...", form_send:"📨 Send",
+    form_success:"Message sent! We'll get back to you shortly."
   },
   tr: {
     nav_how:"Nasıl Çalışır", nav_price:"Fiyatlar", nav_loc:"Şubeler",
@@ -2117,10 +2186,10 @@ const T = {
     lf_call:"Ara", lf_dir:"Yol Tarifi", lf_notify:"Haber Ver", lf_info:"Detaylar",
     baku_country:"Bakü Şehri · Azerbaycan",
     baku_addr:"Konum henüz açıklanmadı — takipte kalın!",
-    baku_hours:"2025 — Yakında açılıyor!",
+    baku_hours:"Yakında açılıyor!",
     baku_notify:"Haberdar olmak için iletişime geçin",
     baku_price:"Aynı uygun fiyatlar",
-    soon_badge:"Yakında Açılıyor", soon_sub:"Bakü 2025",
+    soon_badge:"Yakında Açılıyor", soon_sub:"Bakü — Yakında",
     t_label:"Müşteri Yorumları", t_title:"İnsanlar Ne Diyor?",
     faq_title:"Sık Sorulan Sorular",
     c_label:"İletişime Geç", c_title:"Sorularınız mı Var?",
@@ -2129,7 +2198,9 @@ const T = {
     ft_tag:"Azerbaycan'ın en uygun self-servis oto yıkama istasyonu.",
     ft_nav:"Bağlantılar", ft_contact:"İletişim", ft_social:"Sosyal Medya",
     ft_quba:"Quba, Azerbaycan", ft_baku:"Bakü (Yakında)",
-    ft_rights:"Tüm hakları saklıdır."
+    ft_rights:"Tüm hakları saklıdır.",
+    form_name:"Adınız", form_phone:"Telefon", form_email:"E-posta (isteğe bağlı)", form_msg:"Mesajınız...", form_send:"📨 Gönder",
+    form_success:"Mesajınız gönderildi! Kısa süre içinde sizinle iletişime geçeceğiz."
   },
   de: {
     nav_how:"So funktioniert's", nav_price:"Preise", nav_loc:"Standorte",
@@ -2174,10 +2245,10 @@ const T = {
     lf_call:"Anrufen", lf_dir:"Route", lf_notify:"Benachrichtigen", lf_info:"Mehr",
     baku_country:"Stadt Baku · Aserbaidschan",
     baku_addr:"Standort noch nicht bestätigt — bleiben Sie dran!",
-    baku_hours:"2025 — Eröffnung bald!",
+    baku_hours:"Eröffnung bald!",
     baku_notify:"Kontaktieren Sie uns, um benachrichtigt zu werden",
     baku_price:"Gleiche günstige Preise",
-    soon_badge:"Bald eröffnet", soon_sub:"Baku 2025",
+    soon_badge:"Bald eröffnet", soon_sub:"Baku — Coming Soon",
     t_label:"Kundenbewertungen", t_title:"Was sagen die Leute?",
     faq_title:"Häufig gestellte Fragen",
     c_label:"Kontakt", c_title:"Haben Sie Fragen?",
@@ -2186,7 +2257,9 @@ const T = {
     ft_tag:"Aserbaidschans günstigste Selbstbedienungswaschanlage.",
     ft_nav:"Links", ft_contact:"Kontakt", ft_social:"Social Media",
     ft_quba:"Quba, Aserbaidschan", ft_baku:"Baku (Bald)",
-    ft_rights:"Alle Rechte vorbehalten."
+    ft_rights:"Alle Rechte vorbehalten.",
+    form_name:"Ihr Name", form_phone:"Telefon", form_email:"E-Mail (optional)", form_msg:"Ihre Nachricht...", form_send:"📨 Senden",
+    form_success:"Nachricht gesendet! Wir melden uns in Kürze bei Ihnen."
   },
   fr: {
     nav_how:"Comment ça marche", nav_price:"Tarifs", nav_loc:"Emplacements",
@@ -2231,10 +2304,10 @@ const T = {
     lf_call:"Appeler", lf_dir:"Itinéraire", lf_notify:"M'avertir", lf_info:"Plus d'infos",
     baku_country:"Ville de Bakou · Azerbaïdjan",
     baku_addr:"Emplacement non encore confirmé — restez à l'écoute!",
-    baku_hours:"2025 — Ouverture prochaine!",
+    baku_hours:"Ouverture prochaine!",
     baku_notify:"Contactez-nous pour être informé",
     baku_price:"Mêmes prix abordables",
-    soon_badge:"Ouverture prochaine", soon_sub:"Bakou 2025",
+    soon_badge:"Ouverture prochaine", soon_sub:"Bakou — Bientôt",
     t_label:"Avis clients", t_title:"Ce que disent les gens",
     faq_title:"Questions fréquemment posées",
     c_label:"Contactez-nous", c_title:"Des questions?",
@@ -2243,7 +2316,9 @@ const T = {
     ft_tag:"La station de lavage self-service la plus abordable d'Azerbaïdjan.",
     ft_nav:"Liens", ft_contact:"Contact", ft_social:"Réseaux sociaux",
     ft_quba:"Quba, Azerbaïdjan", ft_baku:"Bakou (Bientôt)",
-    ft_rights:"Tous droits réservés."
+    ft_rights:"Tous droits réservés.",
+    form_name:"Votre nom", form_phone:"Téléphone", form_email:"Email (facultatif)", form_msg:"Votre message...", form_send:"📨 Envoyer",
+    form_success:"Message envoyé ! Nous vous répondrons sous peu."
   },
   ar: {
     nav_how:"كيف يعمل", nav_price:"الأسعار", nav_loc:"الفروع",
@@ -2288,10 +2363,10 @@ const T = {
     lf_call:"اتصل", lf_dir:"اتجاهات", lf_notify:"أعلمني", lf_info:"تفاصيل",
     baku_country:"مدينة باكو · أذربيجان",
     baku_addr:"الموقع لم يتأكد بعد — ترقبوا!",
-    baku_hours:"2025 — الافتتاح قريباً!",
+    baku_hours:"الافتتاح قريباً!",
     baku_notify:"تواصل معنا للحصول على إشعار",
     baku_price:"نفس الأسعار الاقتصادية",
-    soon_badge:"يفتتح قريباً", soon_sub:"باكو 2025",
+    soon_badge:"يفتتح قريباً", soon_sub:"باكو — قريباً",
     t_label:"آراء العملاء", t_title:"ماذا يقول الناس؟",
     faq_title:"الأسئلة الشائعة",
     c_label:"تواصل معنا", c_title:"هل لديك أسئلة؟",
@@ -2300,7 +2375,9 @@ const T = {
     ft_tag:"أكثر محطة غسيل سيارات ذاتية اقتصاداً في أذربيجان.",
     ft_nav:"الروابط", ft_contact:"اتصل", ft_social:"التواصل الاجتماعي",
     ft_quba:"قوبا، أذربيجان", ft_baku:"باكو (قريباً)",
-    ft_rights:"جميع الحقوق محفوظة."
+    ft_rights:"جميع الحقوق محفوظة.",
+    form_name:"اسمك", form_phone:"الهاتف", form_email:"البريد الإلكتروني (اختياري)", form_msg:"رسالتك...", form_send:"📨 إرسال",
+    form_success:"تم إرسال رسالتك! سنتواصل معك قريباً."
   }
 };
 
@@ -2342,7 +2419,7 @@ const FAQ_DATA = {
     {q:"Ödəniş necə edilir?",a:"Nağd pul və ya bank kartı ilə ödəyə bilərsiniz. Minimum ödəniş 50 qəpikdir."},
     {q:"Özüm yumağa bilirəm?",a:"Bəli! Bütün avadanlıq — yüksək təzyiqli su, şampun, şotka — sizin ixtiyarınızdadır. Sadəcə gəlin, ödəyin, yuyun."},
     {q:"Nə qədər vaxt lazımdır?",a:"Orta hesabla 15-25 dəqiqə. Lakin vaxt məhdudiyyəti qoyulmur — öz sürətinizdə işləyin."},
-    {q:"Bakı filialı nə vaxt açılacaq?",a:"Bakı filialımız 2025-ci il üçün planlanır. Dəqiq tarix üçün bizimlə əlaqə saxlayın."},
+    {q:"Bakı filialı nə vaxt açılacaq?",a:"Bakı filialımız tezliklə açılacaq. Dəqiq tarix üçün bizimlə əlaqə saxlayın."},
     {q:"Böyük avtomobillər üçün qiymət eynidir?",a:"Standart avtomobillər üçün 50 qəpik. SUV və yük maşınları üçün əlaqə saxlayın."},
     {q:"Bonus nöqtəsi proqramı nədir?",a:"Hər yumanızda bonus nöqtəsi qazanırsınız. Toplanmış nöqtələr ilə pulsuz yuma qazanırsınız!"},
   ],
@@ -2350,7 +2427,7 @@ const FAQ_DATA = {
     {q:"Как оплатить?",a:"Принимается наличные и банковская карта. Минимальная оплата 50 гяпиков."},
     {q:"Можно ли мыть самому?",a:"Да! Всё оборудование — вода высокого давления, шампунь, щётка — в вашем распоряжении."},
     {q:"Сколько времени занимает?",a:"В среднем 15-25 минут. Ограничений по времени нет — работайте в своём темпе."},
-    {q:"Когда откроется Баку?",a:"Бакинский филиал запланирован на 2025 год. Свяжитесь с нами для уточнения даты."},
+    {q:"Когда откроется Баку?",a:"Бакинский филиал откроется скоро. Свяжитесь с нами для уточнения даты."},
     {q:"Та же цена для больших авто?",a:"50 гяпиков для стандартных авто. Для SUV и грузовиков — уточняйте у нас."},
     {q:"Что такое бонусная программа?",a:"При каждой мойке вы зарабатываете бонусные очки. Накопленные очки = бесплатная мойка!"},
   ],
@@ -2358,7 +2435,7 @@ const FAQ_DATA = {
     {q:"How do I pay?",a:"Cash or bank card accepted. Minimum payment is 50 Qəpik."},
     {q:"Can I wash it myself?",a:"Yes! All equipment — high-pressure water, shampoo, brush — is at your disposal."},
     {q:"How long does it take?",a:"Around 15-25 minutes on average. No time limit — work at your own pace."},
-    {q:"When will Baku open?",a:"Baku is planned for 2025. Contact us for the exact date."},
+    {q:"When will Baku open?",a:"Baku is opening soon. Contact us for the exact date."},
     {q:"Same price for large cars?",a:"50 Qəpik for standard cars. For SUVs and trucks, please contact us."},
     {q:"What is the bonus points program?",a:"Earn points with every wash. Accumulated points = free wash!"},
   ]
@@ -2398,6 +2475,11 @@ function setLang(l) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.getAttribute('data-i18n');
     if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  // Handle placeholder translations
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const k = el.getAttribute('data-i18n-placeholder');
+    if (t[k] !== undefined) el.placeholder = t[k];
   });
   buildTestimonials(l);
   buildFAQ(l);
@@ -2713,6 +2795,55 @@ buildRain();
 buildBubbles();
 buildTrust();
 setLang('az');
+
+// Dynamic footer year
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+// Active nav link scroll spy
+const navSections = ['how','pricing','beforeafter','locations','testimonials','faq','contact'];
+const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  navSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === '#' + current) {
+      link.style.color = 'white';
+      link.style.background = 'rgba(255,255,255,0.1)';
+    } else {
+      link.style.color = '';
+      link.style.background = '';
+    }
+  });
+}, {passive:true});
+
+// FormSubmit success detection
+if (window.location.search.includes('sent=1')) {
+  document.getElementById('form-success').style.display = 'block';
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+  history.replaceState({}, '', window.location.pathname);
+}
+
+// Contact form AJAX (prevent page reload, show inline success)
+const cForm = document.getElementById('contactForm');
+if (cForm) {
+  cForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('formSubmitBtn');
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    try {
+      const fd = new FormData(cForm);
+      await fetch(cForm.action, {method:'POST', body:fd, headers:{Accept:'application/json'}});
+    } catch(err) {}
+    cForm.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  });
+}
 
 console.log('%c💧 TemizCar.az — Professional Car Wash Azerbaijan', 'color:#5aade8;font-size:14px;font-weight:bold');
 </script>
