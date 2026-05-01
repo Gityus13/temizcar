@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="az" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>404 — Səhifə Tapılmadı | TemizCar.az</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-900: #050e1a;
+  --blue-800: #0a1f35;
+  --blue-700: #0d2d4f;
+  --blue-600: #0e3d6b;
+  --blue-500: #1565a8;
+  --blue-400: #2d87d4;
+  --blue-300: #5aade8;
+  --blue-200: #93cdf0;
+  --blue-100: #d6edfa;
+  --teal-400: #14b8a6;
+  --teal-300: #5eead4;
+  --white: #ffffff;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--blue-900);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ── Mesh background ── */
+.bg-mesh {
+  position: fixed; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 30%, rgba(13,61,107,0.9) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(21,101,168,0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 50% 5%,  rgba(20,184,166,0.12) 0%, transparent 60%),
+    var(--blue-900);
+}
+
+/* ── Grid ── */
+.bg-grid {
+  position: fixed; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(90,173,232,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,173,232,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ── Floating orbs ── */
+.orb {
+  position: fixed; border-radius: 50%; pointer-events: none; filter: blur(80px);
+  animation: orbFloat 12s ease-in-out infinite;
+}
+.orb-1 { width: 500px; height: 500px; background: rgba(13,61,107,0.8);  top: -150px; left: -150px; animation-delay: 0s; }
+.orb-2 { width: 350px; height: 350px; background: rgba(45,135,212,0.22); bottom: -100px; right: -100px; animation-delay: 4s; }
+.orb-3 { width: 250px; height: 250px; background: rgba(20,184,166,0.15); top: 40%; left: 60%; animation-delay: 8s; }
+@keyframes orbFloat {
+  0%,100%{ transform: translate(0,0) scale(1); }
+  33%{ transform: translate(25px,-18px) scale(1.04); }
+  66%{ transform: translate(-18px,22px) scale(0.97); }
+}
+
+/* ── Rain ── */
+.rain-wrap { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.rd {
+  position: absolute; top: -30px; width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(147,205,240,0.3));
+  border-radius: 2px;
+  animation: rainFall linear infinite;
+}
+@keyframes rainFall { to { transform: translateY(115vh); } }
+
+/* ── Noise ── */
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── Main content ── */
+.wrap {
+  position: relative; z-index: 10;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+
+/* ── Logo ── */
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 800;
+  color: white; letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 0.4rem;
+  margin-bottom: 3.5rem;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s;
+}
+.logo span { color: var(--blue-300); }
+.logo small { font-size: 0.55rem; color: rgba(255,255,255,0.3); font-weight: 400; letter-spacing: 0.05em; vertical-align: super; }
+
+/* ── Dirty car SVG ── */
+.car-wrap {
+  width: min(360px, 88vw);
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+}
+.car-wrap svg { width: 100%; display: block; }
+
+/* ── 404 number ── */
+.four-o-four {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 20vw, 10rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: white;
+  margin-bottom: 0.25rem;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.35s;
+}
+.four-o-four .accent { color: var(--blue-300); }
+
+/* ── Tagline ── */
+.tagline {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.75rem;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.45s;
+}
+.sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.55s;
+}
+
+/* ── Buttons ── */
+.btns {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.65s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-400), var(--blue-300));
+  color: white; padding: 0.85rem 2rem;
+  border-radius: 12px; font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(45,135,212,0.4);
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(45,135,212,0.55); }
+.btn-ghost {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75); padding: 0.85rem 2rem;
+  border-radius: 12px; font-size: 0.9rem; font-weight: 600;
+  transition: background 0.2s, border-color 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(90,173,232,0.4); transform: translateY(-3px); }
+
+/* ── Quick links ── */
+.quick-links {
+  margin-top: 3rem;
+  display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.75s;
+}
+.qlink {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.78rem; font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.qlink:hover { color: var(--blue-200); border-color: rgba(90,173,232,0.3); background: rgba(90,173,232,0.08); }
+
+/* ── Language switcher ── */
+.lang-switcher {
+  display: flex; align-items: center; gap: 0.4rem;
+  flex-wrap: wrap; justify-content: center;
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.15s;
+}
+.lang-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.75rem; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.2); }
+.lang-btn.active {
+  background: rgba(90,173,232,0.18);
+  border-color: rgba(90,173,232,0.45);
+  color: var(--blue-200);
+}
+
+/* ── Countdown ── */
+.redirect-note {
+  margin-top: 2rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.25);
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.85s;
+}
+.redirect-note span { color: var(--blue-300); font-weight: 700; }
+
+/* ── Bubbles ── */
+.bubble {
+  position: fixed; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), transparent 70%);
+  pointer-events: none;
+  animation: bubbleRise linear infinite;
+}
+@keyframes bubbleRise {
+  0%  { transform: translateY(100vh) scale(0); opacity: 0; }
+  5%  { opacity: 0.5; }
+  95% { opacity: 0.2; }
+  100%{ transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mudWobble {
+  0%,100%{ transform: scaleX(1) scaleY(1); }
+  50%{ transform: scaleX(1.04) scaleY(0.97); }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="rain-wrap" id="rainWrap"></div>
+
+<div class="wrap">
+
+  <!-- Logo -->
+  <a href="/" class="logo">💧 Temiz<span>Car</span><small>.az</small></a>
+
+  <!-- Language switcher -->
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" onclick="applyLang('az',this)">🇦🇿 AZ</button>
+    <button class="lang-btn" onclick="applyLang('ru',this)">🇷🇺 RU</button>
+    <button class="lang-btn" onclick="applyLang('en',this)">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="applyLang('tr',this)">🇹🇷 TR</button>
+    <button class="lang-btn" onclick="applyLang('de',this)">🇩🇪 DE</button>
+    <button class="lang-btn" onclick="applyLang('fr',this)">🇫🇷 FR</button>
+    <button class="lang-btn" onclick="applyLang('ar',this)">🇸🇦 AR</button>
+  </div>
+  <div class="car-wrap">
+    <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shadow -->
+      <ellipse cx="210" cy="192" rx="165" ry="9" fill="rgba(0,0,0,0.35)"/>
+      <!-- Body Lower -->
+      <rect x="38" y="122" width="344" height="58" rx="10" fill="#8b2a1e"/>
+      <!-- Body Upper -->
+      <path d="M88 122 L106 73 L150 55 L270 55 L314 73 L332 122 Z" fill="#8b2a1e"/>
+      <!-- Sheen -->
+      <path d="M88 122 L106 73 L150 55 L270 55 L314 73 L332 122" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+      <!-- Windshield front -->
+      <path d="M112 120 L128 72 L163 58 L163 120 Z" fill="#6b9bb8" opacity="0.85"/>
+      <!-- Windshield rear -->
+      <path d="M257 120 L257 58 L292 72 L308 120 Z" fill="#6b9bb8" opacity="0.85"/>
+      <!-- Side window -->
+      <rect x="166" y="57" width="88" height="62" rx="4" fill="#6b9bb8" opacity="0.85"/>
+      <!-- Door lines -->
+      <line x1="215" y1="122" x2="215" y2="178" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+      <!-- Body crease -->
+      <path d="M38 142 Q210 134 382 142" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+      <!-- Hood -->
+      <path d="M38 122 L38 130 L88 126 L88 120 Z" fill="#6e1f14"/>
+      <!-- Trunk -->
+      <path d="M332 120 L332 128 L382 132 L382 122 Z" fill="#6e1f14"/>
+      <!-- Bumpers -->
+      <path d="M40 172 L40 180 L86 180 L89 172" fill="#1a1a1a"/>
+      <path d="M331 172 L334 180 L380 180 L380 172" fill="#1a1a1a"/>
+      <!-- Headlight -->
+      <ellipse cx="54" cy="143" rx="13" ry="8" fill="#fffde7"/>
+      <ellipse cx="53" cy="142" rx="5" ry="4" fill="white"/>
+      <!-- Taillight -->
+      <ellipse cx="366" cy="143" rx="13" ry="8" fill="#e74c3c"/>
+      <ellipse cx="367" cy="142" rx="5" ry="4" fill="#ff6b6b"/>
+      <!-- Front wheel -->
+      <circle cx="102" cy="182" r="24" fill="#1a1a1a"/>
+      <circle cx="102" cy="182" r="18" fill="#2d2d2d"/>
+      <circle cx="102" cy="182" r="13" fill="#222"/>
+      <g stroke="#888" stroke-width="1.8" stroke-linecap="round">
+        <line x1="102" y1="169" x2="102" y2="182"/><line x1="102" y1="195" x2="102" y2="182"/>
+        <line x1="89"  y1="182" x2="102" y2="182"/><line x1="115" y1="182" x2="102" y2="182"/>
+        <line x1="93"  y1="173" x2="102" y2="182"/><line x1="111" y1="191" x2="102" y2="182"/>
+        <line x1="93"  y1="191" x2="102" y2="182"/><line x1="111" y1="173" x2="102" y2="182"/>
+      </g>
+      <circle cx="102" cy="182" r="5" fill="#888"/>
+      <!-- Rear wheel -->
+      <circle cx="318" cy="182" r="24" fill="#1a1a1a"/>
+      <circle cx="318" cy="182" r="18" fill="#2d2d2d"/>
+      <circle cx="318" cy="182" r="13" fill="#222"/>
+      <g stroke="#888" stroke-width="1.8" stroke-linecap="round">
+        <line x1="318" y1="169" x2="318" y2="182"/><line x1="318" y1="195" x2="318" y2="182"/>
+        <line x1="305" y1="182" x2="318" y2="182"/><line x1="331" y1="182" x2="318" y2="182"/>
+        <line x1="309" y1="173" x2="318" y2="182"/><line x1="327" y1="191" x2="318" y2="182"/>
+        <line x1="309" y1="191" x2="318" y2="182"/><line x1="327" y1="173" x2="318" y2="182"/>
+      </g>
+      <circle cx="318" cy="182" r="5" fill="#888"/>
+      <!-- Wheel arches -->
+      <path d="M73 182 Q73 158 102 158 Q131 158 131 182" fill="none" stroke="#5e1810" stroke-width="5"/>
+      <path d="M289 182 Q289 158 318 158 Q347 158 347 182" fill="none" stroke="#5e1810" stroke-width="5"/>
+      <!-- License plate -->
+      <rect x="175" y="176" width="70" height="11" rx="2" fill="#eee"/>
+      <text x="210" y="185" text-anchor="middle" font-size="5.5" font-weight="800" fill="#333" font-family="Syne,sans-serif">TEMIZCAR.AZ</text>
+      <!-- Antenna -->
+      <line x1="258" y1="55" x2="270" y2="30" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="270" cy="30" r="2" fill="#666"/>
+
+      <!-- DIRT — lots of it, car hasn't been washed -->
+      <g id="dirtLayer" style="animation: mudWobble 4s ease-in-out infinite;">
+        <!-- Body mud splats -->
+        <ellipse cx="88"  cy="166" rx="20" ry="7"  fill="rgba(90,55,20,0.65)"/>
+        <ellipse cx="152" cy="172" rx="14" ry="5"  fill="rgba(80,48,15,0.6)"/>
+        <ellipse cx="228" cy="168" rx="18" ry="6"  fill="rgba(90,55,20,0.58)"/>
+        <ellipse cx="298" cy="170" rx="16" ry="6"  fill="rgba(80,48,15,0.62)"/>
+        <ellipse cx="356" cy="165" rx="12" ry="5"  fill="rgba(90,55,20,0.55)"/>
+        <!-- Door panel streaks -->
+        <rect x="130" y="130" width="160" height="40" rx="3" fill="rgba(70,40,10,0.12)"/>
+        <path d="M120 122 L108 178" stroke="rgba(60,30,0,0.32)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M192 122 L186 178" stroke="rgba(60,30,0,0.25)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M268 122 L264 178" stroke="rgba(60,30,0,0.25)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Roof mud -->
+        <ellipse cx="170" cy="60" rx="22" ry="6"  fill="rgba(70,42,12,0.3)"/>
+        <ellipse cx="245" cy="58" rx="28" ry="5"  fill="rgba(70,42,12,0.25)"/>
+        <!-- Windshield grime -->
+        <rect x="113" y="72" width="48" height="46" rx="3" fill="rgba(60,35,10,0.22)"/>
+        <rect x="258" y="72" width="48" height="46" rx="3" fill="rgba(60,35,10,0.2)"/>
+        <!-- Side window smear -->
+        <rect x="167" y="58" width="86" height="60" rx="3" fill="rgba(60,35,10,0.18)"/>
+        <!-- Wheel arch mud drips -->
+        <ellipse cx="102" cy="168" rx="14" ry="4" fill="rgba(60,30,0,0.5)"/>
+        <ellipse cx="318" cy="168" rx="14" ry="4" fill="rgba(60,30,0,0.5)"/>
+        <!-- Random small splatters -->
+        <circle cx="170" cy="148" r="4" fill="rgba(80,50,15,0.45)"/>
+        <circle cx="248" cy="155" r="3" fill="rgba(80,50,15,0.4)"/>
+        <circle cx="310" cy="145" r="5" fill="rgba(80,50,15,0.42)"/>
+        <circle cx="130" cy="158" r="3.5" fill="rgba(80,50,15,0.38)"/>
+        <!-- Bird drop (humor) -->
+        <ellipse cx="225" cy="62" rx="5" ry="3" fill="rgba(255,255,255,0.55)" transform="rotate(-10,225,62)"/>
+        <ellipse cx="228" cy="65" rx="3" ry="2" fill="rgba(255,255,255,0.45)" transform="rotate(-10,228,65)"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- 4 0 4 -->
+  <div class="four-o-four">4<span class="accent">0</span>4</div>
+
+  <!-- Text -->
+  <p class="tagline" id="tagline">Səhifə tapılmadı — maşın kimi!</p>
+  <p class="sub" id="sub">Axtardığınız səhifə köçürülüb, silinib və ya heç mövcud olmayıb. Ana səhifəyə qayıdın, sizi oradan istiqamətləndirək.</p>
+
+  <!-- Buttons -->
+  <div class="btns">
+    <a href="/" class="btn-primary">🏠 <span id="btn1">Ana Səhifə</span></a>
+    <a href="/#contact" class="btn-ghost">💬 <span id="btn2">Əlaqə</span></a>
+  </div>
+
+  <!-- Quick links -->
+  <div class="quick-links">
+    <a href="/#how"          class="qlink" id="ql1">Necə İşləyir</a>
+    <a href="/#pricing"      class="qlink" id="ql2">Qiymətlər</a>
+    <a href="/#locations"    class="qlink" id="ql3">Filiallar</a>
+    <a href="/#testimonials" class="qlink" id="ql4">Rəylər</a>
+    <a href="/#faq"          class="qlink" id="ql5">FAQ</a>
+    <a href="/privacy.html"  class="qlink" id="ql6">Məxfilik</a>
+  </div>
+
+  <!-- Auto-redirect note -->
+  <p class="redirect-note" id="redirectNote">
+    <span id="countdown">10</span> saniyə sonra avtomatik yönləndiriləcəksiniz
+  </p>
+
+</div>
+
+<script>
+/* ── Rain ── */
+(function buildRain() {
+  const wrap = document.getElementById('rainWrap');
+  for (let i = 0; i < 55; i++) {
+    const d = document.createElement('div');
+    d.className = 'rd';
+    d.style.cssText = `left:${Math.random()*100}%;height:${Math.random()*55+18}px;animation-duration:${Math.random()*0.8+0.4}s;animation-delay:${Math.random()*4}s;opacity:${Math.random()*0.28+0.05}`;
+    wrap.appendChild(d);
+  }
+})();
+
+/* ── Bubbles ── */
+setInterval(() => {
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  const sz = Math.random() * 28 + 6;
+  b.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;animation-duration:${Math.random()*10+7}s;animation-delay:${Math.random()}s`;
+  document.body.appendChild(b);
+  setTimeout(() => b.remove(), 18000);
+}, 900);
+
+/* ── Countdown redirect ── */
+let secs = 10;
+const cdEl = document.getElementById('countdown');
+let countTimer = setInterval(() => {
+  secs--;
+  cdEl.textContent = secs;
+  if (secs <= 0) { clearInterval(countTimer); window.location.href = '/'; }
+}, 1000);
+['click','keydown','touchstart'].forEach(ev =>
+  document.addEventListener(ev, () => {
+    clearInterval(countTimer);
+    document.getElementById('redirectNote').style.display = 'none';
+  }, {once:true})
+);
+
+/* ── All 7 languages ── */
+const LANGS = {
+  az: {
+    tagline: 'Səhifə tapılmadı — maşın kimi!',
+    sub: 'Axtardığınız səhifə köçürülüb, silinib və ya heç mövcud olmayıb. Ana səhifəyə qayıdın, sizi oradan istiqamətləndirək.',
+    btn1: 'Ana Səhifə', btn2: 'Əlaqə',
+    ql1:'Necə İşləyir', ql2:'Qiymətlər', ql3:'Filiallar', ql4:'Rəylər', ql5:'FAQ', ql6:'Məxfilik',
+    redirect: 'saniyə sonra avtomatik yönləndiriləcəksiniz',
+    rtl: false
+  },
+  ru: {
+    tagline: 'Страница не найдена — как грязная машина!',
+    sub: 'Страница перемещена, удалена или никогда не существовала. Вернитесь на главную — мы вас направим.',
+    btn1: 'На главную', btn2: 'Контакты',
+    ql1:'Как работает', ql2:'Цены', ql3:'Филиалы', ql4:'Отзывы', ql5:'FAQ', ql6:'Конфиденциальность',
+    redirect: 'секунд до автоматического перехода',
+    rtl: false
+  },
+  en: {
+    tagline: 'Page not found — like a dirty car!',
+    sub: 'The page you\'re looking for has moved, been deleted, or never existed. Head back home and we\'ll point you in the right direction.',
+    btn1: 'Go Home', btn2: 'Contact',
+    ql1:'How It Works', ql2:'Pricing', ql3:'Locations', ql4:'Reviews', ql5:'FAQ', ql6:'Privacy',
+    redirect: 'seconds until auto-redirect',
+    rtl: false
+  },
+  tr: {
+    tagline: 'Sayfa bulunamadı — kirli araba gibi!',
+    sub: 'Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış. Ana sayfaya dönün, sizi yönlendirelim.',
+    btn1: 'Ana Sayfa', btn2: 'İletişim',
+    ql1:'Nasıl Çalışır', ql2:'Fiyatlar', ql3:'Şubeler', ql4:'Yorumlar', ql5:'FAQ', ql6:'Gizlilik',
+    redirect: 'saniye içinde otomatik yönlendirileceksiniz',
+    rtl: false
+  },
+  de: {
+    tagline: 'Seite nicht gefunden — wie ein schmutziges Auto!',
+    sub: 'Die gesuchte Seite wurde verschoben, gelöscht oder existierte nie. Gehen Sie zur Startseite zurück.',
+    btn1: 'Startseite', btn2: 'Kontakt',
+    ql1:'So funktioniert\'s', ql2:'Preise', ql3:'Standorte', ql4:'Bewertungen', ql5:'FAQ', ql6:'Datenschutz',
+    redirect: 'Sekunden bis zur automatischen Weiterleitung',
+    rtl: false
+  },
+  fr: {
+    tagline: 'Page introuvable — comme une voiture sale !',
+    sub: 'La page que vous cherchez a été déplacée, supprimée ou n\'a jamais existé. Retournez à l\'accueil.',
+    btn1: 'Accueil', btn2: 'Contact',
+    ql1:'Comment ça marche', ql2:'Tarifs', ql3:'Emplacements', ql4:'Avis', ql5:'FAQ', ql6:'Confidentialité',
+    redirect: 'secondes avant la redirection automatique',
+    rtl: false
+  },
+  ar: {
+    tagline: 'الصفحة غير موجودة — مثل سيارة متسخة!',
+    sub: 'الصفحة التي تبحث عنها نُقلت أو حُذفت أو لم تكن موجودة أصلاً. عد إلى الصفحة الرئيسية.',
+    btn1: 'الرئيسية', btn2: 'اتصل بنا',
+    ql1:'كيف يعمل', ql2:'الأسعار', ql3:'الفروع', ql4:'الآراء', ql5:'FAQ', ql6:'الخصوصية',
+    redirect: 'ثانية حتى إعادة التوجيه التلقائي',
+    rtl: true
+  }
+};
+
+/* ── Apply language ── */
+function applyLang(l, btn) {
+  const t = LANGS[l] || LANGS.az;
+
+  document.getElementById('tagline').textContent = t.tagline;
+  document.getElementById('sub').textContent     = t.sub;
+  document.getElementById('btn1').textContent    = t.btn1;
+  document.getElementById('btn2').textContent    = t.btn2;
+  document.getElementById('ql1').textContent     = t.ql1;
+  document.getElementById('ql2').textContent     = t.ql2;
+  document.getElementById('ql3').textContent     = t.ql3;
+  document.getElementById('ql4').textContent     = t.ql4;
+  document.getElementById('ql5').textContent     = t.ql5;
+  document.getElementById('ql6').textContent     = t.ql6;
+
+  // Update redirect note (re-use live secs value)
+  const note = document.getElementById('redirectNote');
+  if (note.style.display !== 'none') {
+    note.innerHTML = `<span id="countdown">${secs}</span> ${t.redirect}`;
+  }
+
+  // RTL toggle
+  document.documentElement.lang = l;
+  document.documentElement.dir  = t.rtl ? 'rtl' : 'ltr';
+
+  // Active button state
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  // Persist choice
+  localStorage.setItem('tcLang', l);
+}
+
+/* ── Auto-detect on load ── */
+(function init() {
+  const stored  = localStorage.getItem('tcLang');
+  const browser = navigator.language.split('-')[0];
+  const l = (stored && LANGS[stored]) ? stored : (LANGS[browser] ? browser : 'az');
+
+  // Highlight correct button
+  const btns = document.querySelectorAll('.lang-btn');
+  const codes = ['az','ru','en','tr','de','fr','ar'];
+  btns.forEach((b, i) => { if (codes[i] === l) b.classList.add('active'); });
+
+  applyLang(l, null);
+  // Re-set active btn after applyLang cleared nothing (btn param was null)
+  btns.forEach((b, i) => { if (codes[i] === l) b.classList.add('active'); });
+})();
+</script>
+</body>
+</html>
